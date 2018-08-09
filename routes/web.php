@@ -11,6 +11,18 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+    
+           
+
+Route::group(['prefix' => 'do'], function(){
+    
+    
 });
+
+Route::group(['middleware'=> ['web']], function(){
+            Route::get('/', [
+                    'uses' =>   'PagesController@index',
+                    'as' => 'index'
+            ]);
+});
+

@@ -22,13 +22,16 @@ Route::group(['middleware'=> ['web']], function(){
                     'uses' => 'dashboardController@index',
                     'as' => 'adminLogin'
                 ]);
-                 
-                              
+                                  
             }); 
 });
   Route::post('/adminlist',[
                     'uses' => 'PagesController@adminlist',
                     'as' => 'adminlist'
+                ]);
+  Route::post('/create_admin',[
+                    'uses' => 'PagesController@createadmin',
+                    'as' => 'create_admin'
                 ]);
 
 Auth::routes();

@@ -60,6 +60,23 @@
                         data: {_token:"{{ Session::token()}}"},
                         success: function(data) {
                             $('#ajax').html(data);
+                        }, 
+                        error: function(){
+                             sweetAlert("Oops...", "Something went wrong !!", "error");
+                        }
+                       
+                });
+            });
+            $('#create_admin').click(function(){
+                    $.ajax({
+                        type:"post",
+                        url:"{{route('create_admin')}}",
+                        data: {_token:"{{ Session::token()}}"},
+                        success: function(data) {
+                            $('#ajax').html(data);
+                        }, 
+                        error: function(){
+                             sweetAlert("Oops...", "Something went wrong !!", "error");
                         }
                        
                 });
@@ -100,6 +117,7 @@
         showConfirmButton: false
     });
         }
+        
     
     </script>
 </body>

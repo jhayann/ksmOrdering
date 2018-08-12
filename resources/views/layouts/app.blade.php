@@ -19,6 +19,48 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <style>
+           .title
+        {
+            width: 100%;
+              position: relative;
+              z-index: 1;
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: flex;
+              flex-wrap: wrap;
+              flex-direction: column;
+              align-items: center;
+            background-image:url('{{ URL::to('img/header.jpg') }}');
+                 background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+            height: 300px;
+            padding-top: 90px;
+        }
+        .title-1
+        {
+          font-family:impact;
+          font-size: 30px;
+          color: #14fffb;
+          text-transform: uppercase;
+          line-height: 1.2;
+          text-align: center;
+            
+        }
+        .card, .title
+        {
+            border-radius: 10px;
+        }
+        @media (max-width:720px)
+        {
+            .right  {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -46,7 +88,7 @@
                             </li>
                        <!--     <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li> -->
+                            </li> --> 
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

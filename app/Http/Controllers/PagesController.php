@@ -21,4 +21,11 @@ class PagesController extends Controller
             return response($v);
         }
     }
+    public function createadmin(Request $request)
+    {
+         if($request->ajax())
+        {
+            return response()->view('admin.create');
+        }
+    }
 }

@@ -53,8 +53,8 @@
         </div>
       </div>
     </nav>
+@yield('contents')
 
-   @yield('contents');
     <!-- Bootstrap core JavaScript -->
     <script src="{{ URL::to('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ URL::to('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>

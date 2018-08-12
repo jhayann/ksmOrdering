@@ -11,18 +11,23 @@
 |
 */
 
-    
-           
-
-Route::group(['prefix' => 'do'], function(){
-    
-    
-});
 
 Route::group(['middleware'=> ['web']], function(){
             Route::get('/', [
                     'uses' =>   'PagesController@index',
                     'as' => 'index'
             ]);
+            Route::group(['prefix' => 'admin'], function(){
+                Route::get('/login',[
+                    'uses' => 'PagesController@adminLogin',
+                    'as' => 'adminLogin'
+                ]);
+                  Route::get('/dashboard',[
+                    'uses' => 'PagesController@adminDashboard',
+                    'as' => 'adminDashboard'
+                ]);
+                
+                 
+            }); 
 });
 

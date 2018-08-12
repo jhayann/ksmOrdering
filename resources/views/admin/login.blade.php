@@ -1,0 +1,111 @@
+@extends('layouts.adminlayout')
+
+@section('styles')
+    <style type="text/css">
+        body {
+        margin:0;
+        }
+        .right, .left 
+        {
+            height: 100vh;
+        }
+        .right 
+        {
+            background-image: url('{{ URL::to('img/water1.jpg') }}');
+            background-size: 100% 100%;
+        }
+        .left
+        {
+            padding-top: 16%;    
+            background-color:#71cce2;
+        }
+        .row 
+        {
+        max-width: 100%;
+        }
+        .card-body
+        {
+            width:60%;
+            margin: auto;
+        }
+        .card-img-top
+        {
+            max-height: 200px;
+        }
+        .title
+        {
+            width: 100%;
+              position: relative;
+              z-index: 1;
+              display: -webkit-box;
+              display: -webkit-flex;
+              display: -moz-box;
+              display: -ms-flexbox;
+              display: flex;
+              flex-wrap: wrap;
+              flex-direction: column;
+              align-items: center;
+            background-image:url('{{ URL::to('img/header.jpg') }}');
+                 background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+            height: 200px;
+            padding-top: 90px;
+        }
+        .title-1
+        {
+          font-family:impact;
+          font-size: 30px;
+          color: #14fffb;
+          text-transform: uppercase;
+          line-height: 1.2;
+          text-align: center;
+            
+        }
+        .card, .title
+        {
+            border-radius: 10px;
+        }
+        @media (max-width:720px)
+        {
+            .right  {
+                display: none;
+            }
+        }
+       
+    </style>
+@endsection
+
+@section('contents')
+<div class="row">
+    <div class="col-md-6 right ">
+
+    </div>
+    <div class="col-md-6 left">
+       <div class="card">
+           <div class="title">
+                   <p class="title-1">SIGN IN</p>
+           </div>
+            <div class="card-body">
+                             <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            </div>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+@endsection

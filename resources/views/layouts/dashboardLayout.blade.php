@@ -11,6 +11,7 @@
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
     <title>KSM Dashboard</title>
+     <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href=" {{URL::to('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
@@ -24,8 +25,6 @@
     <script src="https:**oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-
-
 <body class="fix-header fix-sidebar">
     <!-- Preloader - style you can find in spinners.css -->
     <div class="preloader">
@@ -34,7 +33,6 @@
     </div>
 	    <div id="main-wrapper">
 	    @yield('contents')
-		
 		</div>
 	<script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap tether Core JavaScript -->
@@ -46,9 +44,64 @@
     <script src="{{URL::to('js/sidebarmenu.js')}}"></script>
     <!--stickey kit -->
     <script src="{{URL::to('js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
+    
+    <script src="{{ URL::to('js/lib/sweetalert/sweetalert.min.js')}}"></script>
+    <!-- scripit init-->
+
     <!--Custom JavaScript -->
     <script src="{{URL::to('js/custom.min.js')}}"></script>
-
+    <script>
+        $(document).ready(function(){
+            $('#adminlist').click(function(){
+                poper('Please wait!','Working on it now ...');
+                $.ajax({
+                        type:"post",
+                        url:"{{route('adminlist')}}",
+                        data: {_token:"{{ Session::token()}}"},
+                        success: function(data) {
+                            $('#ajax').html(data);
+                        }
+                       
+                });
+            });
+        });
+        
+        function confirmRem() 
+        {
+                $('.sweet-success-cancel').click(function(){
+                                    swal({
+            title: "Are you sure to delete ?",
+            text: "You will not be able to recover this imaginary file !!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it !!",
+            cancelButtonText: "No, cancel it !!",
+            closeOnConfirm: false,
+            closeOnCancel: false
+        },
+        function(isConfirm){
+            if (isConfirm) {
+                swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
+            }
+            else {
+                swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
+            }
+        });
+                });
+        }
+        
+        function poper(e,r)
+        {
+        swal({
+        title: e,
+        text: r,
+        timer: 2000,
+        showConfirmButton: false
+    });
+        }
+    
+    </script>
 </body>
 
 </html>

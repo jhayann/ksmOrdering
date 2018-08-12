@@ -104,7 +104,11 @@
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                                    <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a></li>
+                                                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
                                 </ul>
                             </div>
                         </li>
@@ -115,42 +119,84 @@
 
 <div class="left-sidebar">
     <!-- Sidebar scroll-->
-    <div class="scroll-sidebar">
-        <nav class="sidebar-nav">
-            <ul id="sidebarnav">
-                <li class="nav-devider"></li>
-                <li class="nav-label">Home</li>
-                <li> <a class="has-arrow  " href="#" aria-expanded="false"><i class="fa fa-tachometer"></i><span class="hide-menu">Dashboard </span></a>
-                    <ul aria-expanded="false" class="collapse">
-                        <li><a href="index.html">Ecommerce </a></li>
-                        <li><a href="index1.html">Analytics </a></li>
-                    </ul>
-                </li>
-                <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Products</span></a>
-                       <ul>
-                           <li><a href="#">Add Product</a></li>
-                            <li><a href="#">Manage Product</a></li>
-                       </ul>
-                </li>
-                <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Customers</span></a>
-                   <ul>
-                        <li><a href="#">My Resellers</a></li>
-                        <li><a href="#">Resellers Info</a></li>
-                   </ul>                    
-                </li>
-                <li> <a href="#" class="" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>
-                    
-                </li>
-                <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Sales Report</span></a>
-                    
-                </li>
-            </ul>
-        </nav>
-    </div>
+   @include('includes.sidebar')
 </div>
 
 <div class="page-wrapper">
-
+    <div class="row page-titles">
+                <div class="col-md-5 align-self-center">
+                    <h3 class="text-primary">Dashboard</h3> </div>
+                <div class="col-md-7 align-self-center">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
+                    </ol>
+                </div>
+    </div>
+        <div class="container-fluid">
+          <div class="row">
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>568120</h2>
+                                    <p class="m-b-0">Total Revenue</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>1178</h2>
+                                    <p class="m-b-0">Sales</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>25</h2>
+                                    <p class="m-b-0">Stores</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-30">
+                            <div class="media">
+                                <div class="media-left meida media-middle">
+                                    <span><i class="fa fa-user f-s-40 color-danger"></i></span>
+                                </div>
+                                <div class="media-body media-text-right">
+                                    <h2>847</h2>
+                                    <p class="m-b-0">Customer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    
+     <div class="col-auto">
+        <div class="card">
+            <div class="card-body container" id="ajax">
+                
+            </div>
+         </div>
+    </div>
 </div>
 @endsection
 

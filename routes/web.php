@@ -18,16 +18,19 @@ Route::group(['middleware'=> ['web']], function(){
                     'as' => 'index'
             ]);
             Route::group(['prefix' => 'admin'], function(){
-                Route::get('/login',[
-                    'uses' => 'PagesController@adminLogin',
+                Route::get('/',[
+                    'uses' => 'dashboardController@index',
                     'as' => 'adminLogin'
                 ]);
-                  Route::get('/dashboard',[
-                    'uses' => 'PagesController@adminDashboard',
-                    'as' => 'adminDashboard'
-                ]);
-                
                  
+                              
             }); 
 });
+  Route::post('/adminlist',[
+                    'uses' => 'PagesController@adminlist',
+                    'as' => 'adminlist'
+                ]);
 
+Auth::routes();
+
+//Route::get('/home', 'dashboardController@index');

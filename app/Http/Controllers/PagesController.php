@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
 class PagesController extends Controller
 {
      
@@ -12,14 +12,13 @@ class PagesController extends Controller
         return view('pages.home');    
     }
     
-    public function adminLogin()
+      public function adminlist(Request $request)
     {
-        return view('admin.login');
+        if($request->ajax())
+        {
+            $users = User::all(); 
+            $v = view('admin.list')->with('users',$users);
+            return response($v);
+        }
     }
-    
-    public function adminDashboard()
-    {
-        return  view('admin.dashboard');
-    }
-    
 }

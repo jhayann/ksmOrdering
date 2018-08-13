@@ -2,10 +2,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header">Add administrator</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
+                <div class="card-body container">
+                    <form method="POST" id="form" action="{{ route('register') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -71,3 +71,44 @@
         </div>
     </div>
 </div>
+<script>
+    $('form#form').submit(function(e){
+   e.preventDefault();
+        var name = $('#name').val();
+      var email = $('#email').val();
+        var pass = $('#password').val();
+        var conpass = $('#password-confirm').val();
+          if (pass != conpass){
+            $('#password').toggleClass('is-invalid');
+                     $('#password-confirm').toggleClass('is-invalid');
+               sweetAlert("Oops...", "Your password  is not match!", "error");
+            return  false;
+        }
+         $.ajax({
+             type:"post",
+             url: "{{ route('insert_admin') }}",
+             data: {_token:"{{Session::token()}}",name:name,email: email ,password:  pass,password_confirm:  conpass},
+             success: function(response) {
+                 $('#ajax').html(response);
+             },
+             error: function(err) {
+                 var msg = err.responseJSON.message;
+                 var error = err.responseJSON.errors;
+                console.log(msg);
+                if(/23000/.test(msg)){
+                    sweetAlert("Oops...", "Email is already use. !!", "error");
+                } else if(/invalid/.test(msg))
+                 sweetAlert("Oops...", "The data is invalid !!", "error");
+                 else {
+                    sweetAlert("Oops...", "Something went wrong !!", "error");
+                }
+             }
+       
+             
+         });
+    
+    });
+    
+
+    
+</script>

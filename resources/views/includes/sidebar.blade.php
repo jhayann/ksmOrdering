@@ -24,8 +24,8 @@
                 <li> <a href="#adminlist" class="has-arrow" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>
                     <ul>
                         <li><a href="javascript:void(0);" id="adminlist">Admin List</a></li>
-                            <li><a href="javascript:void(0);" id="create_admin">Create admin</a></li>
-                        <li><a href="javascript:void(0);">Manage Admin</a></li>
+                            <li><a href="javascript:void(0);" id="create_admin">Create admin(ajax)</a></li>
+                        <li><a href=" {{ route('admin','register')}}">Create admin</a></li>
                    </ul> 
                 </li>
                 <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-bar-chart"></i><span class="hide-menu">Sales Report</span></a>

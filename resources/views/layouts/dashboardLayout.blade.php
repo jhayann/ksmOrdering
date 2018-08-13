@@ -31,9 +31,18 @@
         <svg class="circular" viewBox="25 25 50 50">
 			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
     </div>
-	    <div id="main-wrapper">
-	    @yield('contents')
-		</div>
+        <div id="main-wrapper">
+            <div class="header">
+                @include('includes.navbar')
+            </div>
+            <div class="left-sidebar">
+                <!-- Sidebar scroll-->
+                @include('includes.sidebar')
+            </div>
+            <div class="page-wrapper">
+                @yield('content')
+            </div>
+        </div>
 	<script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{URL::to('js/lib/bootstrap/js/popper.min.js')}}"></script>
@@ -74,13 +83,14 @@
                         data: {_token:"{{ Session::token()}}"},
                         success: function(data) {
                             $('#ajax').html(data);
+                      
                         }, 
                         error: function(){
                              sweetAlert("Oops...", "Something went wrong !!", "error");
                         }
-                       
                 });
             });
+           
         });
         
         function confirmRem() 
@@ -116,9 +126,7 @@
         timer: 2000,
         showConfirmButton: false
     });
-        }
-        
-    
+        }  
     </script>
 </body>
 

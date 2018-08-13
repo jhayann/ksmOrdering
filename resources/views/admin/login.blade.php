@@ -79,7 +79,6 @@
 @section('contents')
 <div class="row">
     <div class="col-md-6 right ">
-
     </div>
     <div class="col-md-6 left">
        <div class="card">
@@ -98,7 +97,7 @@
                 <label for="exampleInputPassword1">Password</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <button type="submit" onclick="register()" class="btn btn-primary btn-block">Login</button>
         </form>
             </div>
 

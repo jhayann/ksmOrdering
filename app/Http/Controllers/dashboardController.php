@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Notification;
 class dashboardController extends Controller
 {
     /**
@@ -21,9 +22,46 @@ class dashboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($page = null)
     {
-        return view('admin.dashboard');
+        if($page == "register")
+        {
+             $notification =  Notification::all();
+            return view('auth.register')->with('notifications',$notification);
+        } else if($page==null){
+        $notification =  Notification::all();
+        return view('admin.dashboard')->with('notifications',$notification);
+        }
+        return abort(404);
+        
+    }
+    
+        public function notif()
+    {
+        $notification =  Notification::all();
+        
+    }
+    
+    public function insertadmin(Request $request)
+    {
+            if($request->ajax())
+            {
+            $this->validate($request,[
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:6'
+            ]);
+                $name = $request->input('name');
+            $email = $request->input('email');
+            $password = $request->input('password');
+            
+                $user = new User();
+                $user->name = $name;
+                $user->email = $email;
+                $user->password = bcrypt($password);
+                $user->save();
+            return response()->view('admin.create');
+        }
     }
     
   

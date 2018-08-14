@@ -35,5 +35,18 @@ Route::post('/insert_admin',[
 ]);
 });
 
+/*
+|--------------------------------------------------------------------------
+| Web auth API
+|--------------------------------------------------------------------------*/
+Route::group(['prefix' => 'api'], function()
+{
+    Route::resource('authenticate/', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+    
+});
+
+
+
 Auth::routes();
 Route::get('/admin', 'dashboardController@index');

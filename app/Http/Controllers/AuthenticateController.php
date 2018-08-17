@@ -25,8 +25,6 @@ class AuthenticateController extends Controller
     {
       //
     }    
-    
-    
     public function authenticate(Request $request)
     {
        
@@ -47,5 +45,12 @@ class AuthenticateController extends Controller
 
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
+    }
+    public function getProfile(Request $request) 
+    {
+        $credentials = $request->only('username','token');
+       $customer=$credentials['username'];
+        $customer = Customer::where('username',$customer)->get();
+          return response()->json($customer);
     }
 }

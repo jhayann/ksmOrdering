@@ -1,4 +1,4 @@
-<nav class="navbar top-navbar navbar-expand-md navbar-light">
+<nav class="navbar top-navbar navbar-expand-md navbar-cyan">
        <div class="navbar-header">
         <a class="navbar-brand" href="index.html">
             <!-- Logo icon -->
@@ -55,8 +55,8 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="{{ URL::to('img/users/avatar-3.jpg')}}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Michael John</h4>
-                                                <p class="text-muted">Zebra Theme@gmail.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                                <h4>Rey Jhon</h4>
+                                                <p class="text-muted">reyjhonbaquirin@yahoo.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                                             </div>
                                         </div>
                                     </li>

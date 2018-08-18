@@ -30,8 +30,16 @@ Route::group(['middleware'=> ['web']], function(){
                     'as' => 'create_admin'
                 ]);
 Route::post('/insert_admin',[
-                        'uses' => 'dashboardController@insertadmin',
+                    'uses' => 'dashboardController@insertadmin',
                     'as' => 'insert_admin'
+]);
+Route::post('/customerlist',[
+                    'uses' =>  'PagesController@customerList',
+                    'as' => 'customerlist'
+]);
+Route::post('/data/users',[
+                    'uses'=> 'dashboardController@resellerDataProccessor',
+                    'as' => 'resellerDataProccessing'
 ]);
 });
 
@@ -43,7 +51,7 @@ Route::group(['prefix' => 'api'], function()
 {
     Route::resource('authenticate/', 'AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'AuthenticateController@authenticate');
-    Route::post('getprofile','AuthenticateController@getProfile');
+    Route::get('getprofile','AuthenticateController@getProfile');
 });
 
 

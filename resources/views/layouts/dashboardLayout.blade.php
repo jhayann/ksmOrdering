@@ -17,6 +17,17 @@
     <!-- Custom CSS -->
     <link href="{{URL::to('css/helper.css')}}" rel="stylesheet">
     <link href="{{URL::to('css/style.css')}}" rel="stylesheet">
+    	<script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
+    <style>
+        .navbar, .navbar-header
+        {
+            background-color:#1c92b2!important;
+        }
+        .navbar-nav i
+        {
+            color: white;
+        }
+    </style>
     @yield('styles')
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:** -->
@@ -40,10 +51,11 @@
                 @include('includes.sidebar')
             </div>
             <div class="page-wrapper">
+               @yield('pagetitle')
                 @yield('content')
             </div>
         </div>
-	<script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
+
     <!-- Bootstrap tether Core JavaScript -->
     <script src="{{URL::to('js/lib/bootstrap/js/popper.min.js')}}"></script>
     <script src="{{URL::to('js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -89,6 +101,20 @@
                              sweetAlert("Oops...", "Something went wrong !!", "error");
                         }
                 });
+            });
+            $('#customerlist').click(function(){
+                poper('Please wait!','Working on it now ...');
+                $.ajax({
+                    type:"post",
+                    url:"{{ route('customerlist') }}",
+                    data:{_token: "{{ Session::token()}}"},
+                    success: function (data){
+                        $('#ajax').html(data);
+                    },
+                    error: function () {
+                        sweetAlert("Oops...", "Something went wrong  while getting resellers!!", "error");
+                    }
+                });                
             });
            
         });

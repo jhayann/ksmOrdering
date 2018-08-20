@@ -2,7 +2,7 @@
        <div class="navbar-header">
         <a class="navbar-brand" href="index.html">
             <!-- Logo icon -->
-            <b><img src="{{ URL::to('img/logo.png') }}" alt="homepage" class="dark-logo" /></b>
+            <b><img src="{{ URL::to('img/favicon.png')}}" width="17px" height="17px" alt="homepage" class="dark-logo" /></b>
             <!--End Logo icon -->
             <!-- Logo text -->
             <span><img src="{{URL::to('img/logo-text.png')}}" alt="homepage" class="dark-logo" /></span>

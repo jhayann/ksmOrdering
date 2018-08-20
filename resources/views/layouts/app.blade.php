@@ -12,6 +12,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::to('img/favicon.png')}}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
@@ -84,7 +85,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('customerLogin') }}">{{ __('Login') }}</a>
                             </li>
                        <!--     <li class="nav-item">
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>

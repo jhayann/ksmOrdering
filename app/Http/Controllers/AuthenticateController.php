@@ -19,7 +19,7 @@ class AuthenticateController extends Controller
        // the user from retrieving their token if they don't already have it
        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
    }
-  
+   
     
       public function index($user)
     {
@@ -46,6 +46,7 @@ class AuthenticateController extends Controller
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
     }
+    
     public function getProfile(Request $request) 
     {
         $credentials = $request->only('username','token');

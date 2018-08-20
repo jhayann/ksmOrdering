@@ -65,4 +65,20 @@ Route::group(['prefix' => 'customer'], function()
         'uses' => 'CustomerController@index',
         'as' => 'customerLogin'
    ]);
+   Route::post('/session',[
+    'uses' => 'CustomerController@setSession',
+    'as' => 'setSession'
+]);
+   Route::get('/home',[
+    'uses' => 'CustomerController@home',
+    'as' => 'customer.showHome'
+]);
+Route::get('/logout',[
+    'uses' => 'CustomerController@logout',
+    'as' => 'customer.logout'
+]);
+   Route::post('/auth',[
+    'uses' => 'CustomerController@authenticate',
+    'as' => 'customerAuth'
+   ]);
 });

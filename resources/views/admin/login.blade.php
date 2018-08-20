@@ -15,7 +15,7 @@
             background-size: 100% 100%;
         }
         .left
-        {
+        { 
             padding-top: 16%;    
             background-color:#71cce2;
         }
@@ -72,12 +72,16 @@
                 display: none;
             }
         }
-       
+
     </style>
 @endsection
 
 @section('contents')
-<div class="row">
+<div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+</div>
+<div class="row" id="main-">
     <div class="col-md-6 right ">
     </div>
     <div class="col-md-6 left">

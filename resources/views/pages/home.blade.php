@@ -15,7 +15,7 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="mb-5"  style="color:blackf!important;text-shadow: 5px 5px 5px #000000;">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+            <p class="mb-5"  style="color:black!important;text-shadow: 5px 5px 5px #000000;">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
           </div>
         </div>
@@ -178,7 +178,7 @@
     <section class="bg-dark text-white">
       <div class="container text-center">
         <h2 class="mb-4">Free Delivery at your doorsteps!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Order Now!</a>
+        <a class="btn btn-light btn-xl sr-button" href="http://system.ksm.com/customer/login">Register now!</a>
       </div>
     </section>
 
@@ -188,7 +188,7 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">Let's Get In Touch!</h2>
             <hr class="my-4">
-            <p class="mb-5">Reay to start your  business with us? Be our reseller and accumulate a big discount and special items through our membership points system.</p>
+            <p class="mb-5">Ready to start your  business with us? Be our reseller and accumulate a big discount and special items through our membership points system.</p>
           </div>
         </div>
         <div class="row">

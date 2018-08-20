@@ -46,7 +46,23 @@ Route::group(['prefix' => 'api'], function()
     Route::get('getprofile','AuthenticateController@getProfile');
 });
 
-
+/*
+|--------------------------------------------------------------------------
+| Auth Resource Route
+|--------------------------------------------------------------------------*/
 
 Auth::routes();
 Route::get('/admin', 'dashboardController@index');
+
+/*
+|--------------------------------------------------------------------------
+|Customer resource route
+|--------------------------------------------------------------------------*/
+
+Route::group(['prefix' => 'customer'], function()
+{
+   Route::get('/login',[
+        'uses' => 'CustomerController@index',
+        'as' => 'customerLogin'
+   ]);
+});

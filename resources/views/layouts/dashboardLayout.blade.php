@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::to('img/favicon.png')}}">
     <title>KSM Dashboard</title>
      <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
     <!-- Bootstrap Core CSS -->

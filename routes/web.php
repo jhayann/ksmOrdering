@@ -42,7 +42,7 @@ Route::post('/insert_admin',[
                     'as' => 'insert_admin'
 ]); 
 });
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web auth API
@@ -97,6 +97,11 @@ Route::get('/logout',[
    [
     'uses' => 'CustomerController@register',
     'as' => 'customer.register'
+   ]);
+  Route::post('/create',
+   [
+    'uses' => 'CustomerController@store',
+    'as' => 'customer.store'
    ]);
 
 /*

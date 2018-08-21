@@ -18,7 +18,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>                          
-                            </div>
+                             </div>
                         </div>
 
                         <div class="form-group row">
@@ -36,6 +36,10 @@
                                 <button type="button" id="bt" class="btn btn-primary">
                                     {{ __('Login') }}
                                 </button>
+                                <button type="button" id="reg" class="btn btn-primary">
+                                    {{ __('Register') }}
+                                </button>
+
 
                               <a class="btn btn-link" href="{{ route('customer.password.request') }}">
                                     {{ __('Forgot Your Password?') }}
@@ -85,8 +89,21 @@
                     url:" {{route('logout')}}"
                 });
         
+        $('#reg').click(function(){
+                swal({
+                    title: "Please wait !",
+                    text: "Proccessing your registration form!",
+                    timer: 3500,
+                    showConfirmButton: false
+                });
+                setTimeout(register, 3000)
+        });
 
     });
+    function register()
+    {
+          window.location.href="{{route('customer.register')}}";
+    }
     function createSession(e)
     {
         $.ajax({

@@ -178,7 +178,7 @@
     <section class="bg-dark text-white">
       <div class="container text-center">
         <h2 class="mb-4">Free Delivery at your doorsteps!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://system.ksm.com/customer/login">Register now!</a>
+        <a class="btn btn-light btn-xl sr-button" href="{{ route('customer.register')}}">Register now!</a>
       </div>
     </section>
 

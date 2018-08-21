@@ -5,9 +5,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Register as our reseller</div>
-
+                @include('includes.message')
                 <div class="card-body container">
-                    <form method="POST" id="form" action="{{ route('customer.register') }}" aria-label="{{ __('Register') }}">
+                    <form method="POST" id="form" action="{{ route('customer.store') }}" aria-label="{{ __('Register') }}">
                         @csrf
 
                         <div class="form-group row">
@@ -19,6 +19,19 @@
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Username') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="username" type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
+
+                                @if ($errors->has('username'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('username') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -59,12 +72,41 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" required autofocus>
+
+                                @if ($errors->has('address'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('address') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                         <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CP no.') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="cpnumber" type="text" class="form-control{{ $errors->has('cpnumber') ? ' is-invalid' : '' }}" name="cpnumber" value="{{ old('cpnumber') }}" required autofocus>
+
+                                @if ($errors->has('cpnumber'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('cpnumber') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Register') }}
                                 </button>
+                                  <a class="btn btn-link" href="{{ route('customerLogin') }}">
+                                    {{ __('Already have an account? Click here') }}
+                                </a> 
                             </div>
                         </div>
                     </form>

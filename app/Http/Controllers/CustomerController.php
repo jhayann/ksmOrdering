@@ -17,7 +17,7 @@ class CustomerController extends Controller
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the authenticate method. We don't want to prevent
         // the user from retrieving their token if they don't already have it
-        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register']]);
+        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register','store']]);
     }
 
     public function setSession(Request $request)
@@ -97,7 +97,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -108,7 +108,24 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+               'name' => 'required|string|max:255',
+                'username' => 'required|string|unique:customers',
+                'email' => 'required|string|email|max:255|unique:customers',
+                'password' => 'required|string|min:6|confirmed' ,
+                'address' => 'required|string',
+                'cpnumber'=>'required|min:11'
+        ]);
+        $customer = new Customer();
+        $customer->name = $request->name;
+        $customer->username = $request->username;
+        $customer->email = $request->email;
+        $customer->password = bcrypt($request->password);
+        $customer->address = $request->address;
+        $customer->number = $request->cpnumber;
+        $customer->profileimg =null;
+        $customer->save();
+        return redirect()->route('customerLogin');
     }
 
     /**

@@ -98,4 +98,26 @@ Route::get('/logout',[
     'uses' => 'CustomerController@register',
     'as' => 'customer.register'
    ]);
+
+/*
+|--------------------------------------------------------------------------
+|Customer Password Reset
+|--------------------------------------------------------------------------*/
+Route::get('password/reset',[
+    'uses' => 'CustomerPassword\ForgotPasswordController@showLinkRequestForm',
+    'as' => 'customer.password.request'
+]);
+Route::post('password/email',[
+    'uses' => 'CustomerPassword\ForgotPasswordController@sendResetLinkEmail',
+    'as' => 'customer.password.email'
+]);
+Route::get('password/reset/{token}',[
+    'uses' => 'CustomerPassword\ResetPasswordController@showResetForm',
+    'as' => 'customer.password.reset'
+]);
+Route::post('password/reset',[
+    'uses' => 'CustomerPassword\ResetPasswordController@reset'
+    
+]);
+
 });

@@ -68,11 +68,11 @@ class dashboardController extends Controller
                 return response()->view('admin.create');
             }
     }
-    
+
     public function resellerDataProccessor(Request $request)
     {
-        //print_r($request->all());
-        
+   // print_r($request->all());
+       
         $columns = array(
 			0 => 'name',
 			1 => 'username',

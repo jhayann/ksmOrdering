@@ -1,6 +1,8 @@
 <div class="card-body">
+<h4 class="card-title">Resellers List</h4>
+ <h6 class="card-subtitle">Export list to Copy, CSV, Excel, PDF & Print</h6>
     <div class="table-responsive">
-            <table class="table">
+            <table class="table" id="customer">
                <thead>
                 <tr>
                     <th>Reseller Name</th>
@@ -11,20 +13,37 @@
                 </tr>
                 </thead>
                 <tbody>
-                @if(count($customers) >= 1)
-                    @foreach($customers as $customer)
-                        <tr>
-                            <td>{{ $customer->name }} </td>
-                            <td>{{ $customer->username }} </td>
-                            <td>{{ $customer->email }} </td>
-                            <td>{{ $customer->address }} </td>
-                            <td>{{ $customer->number }} </td>
-                        </tr>                    
-                    @endforeach
-                @else
-                    <h1> Currently no Resellers</h1>
-                @endif
+           
                 </tbody>
             </table>
     </div>    
 </div>
+
+
+<script>
+    $(document).ready(function(){
+
+        $('#customer').DataTable({
+            "processing": true,
+				"serverSide": true,
+				"ajax": {
+					"url":"<?= route('dataProccessor') ?>",
+					"dataType":"json",
+					"type":"POST",
+					"data":{"_token":"<?= csrf_token() ?>"}
+				},
+				"columns":[
+					{"data":"name"},
+					{"data":"username"},
+					{"data":"email","orderable":false},
+                    {"data":"address","orderable":false},
+					{"data":"number","searchable":false,"orderable":false}
+				],
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+      
+    });
+</script>

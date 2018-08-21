@@ -21,6 +21,14 @@ Route::group(['middleware'=> ['web']], function(){
                     'as' => 'admin'
                 ]);                    
             }); 
+Route::post('/customerlist',[
+        'uses' => 'PagesController@customerlist',
+        'as' => 'customerlist'
+]); 
+Route::post('/customerlistProcessor',[
+    'uses' => 'dashboardController@resellerDataProccessor',
+    'as' => 'dataProccessor'
+]); 
  Route::post('/adminlist',[
                     'uses' => 'PagesController@adminlist',
                     'as' => 'adminlist'

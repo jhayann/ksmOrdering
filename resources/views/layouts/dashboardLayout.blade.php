@@ -92,6 +92,22 @@
             });
            
         });
+        $('#customerlist').click(function(){
+                poper('Please wait!','Working on it now ...');
+                $.ajax({
+                    type:"post",
+                    url:"{{ route('customerlist') }}",
+                    data:{_token: "{{ Session::token()}}"},
+                    success: function (data){
+                        $('#ajax').html(data);
+                    },
+                    error: function () {
+                        sweetAlert("Oops...", "Something went wrong  while getting resellers!!", "error");
+                    }
+                });                
+            });
+           
+        });
         
         function confirmRem() 
         {

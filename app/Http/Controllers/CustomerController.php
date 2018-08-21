@@ -17,7 +17,7 @@ class CustomerController extends Controller
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the authenticate method. We don't want to prevent
         // the user from retrieving their token if they don't already have it
-        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession']]);
+        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register']]);
     }
 
     public function setSession(Request $request)
@@ -77,6 +77,11 @@ class CustomerController extends Controller
         {
             return redirect()->route('customerLogin');
         }
+    }
+
+    public function register()
+    {
+        return view('customer.register');
     }
 
     public function logout()

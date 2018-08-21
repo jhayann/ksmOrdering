@@ -38,7 +38,7 @@ Route::post('/customerlistProcessor',[
                     'as' => 'create_admin'
                 ]);
 Route::post('/insert_admin',[
-                        'uses' => 'dashboardController@insertadmin',
+                    'uses' => 'dashboardController@insertadmin',
                     'as' => 'insert_admin'
 ]); 
 });
@@ -92,5 +92,10 @@ Route::get('/logout',[
    Route::post('/auth',[
     'uses' => 'CustomerController@authenticate',
     'as' => 'customerAuth'
+   ]);
+   Route::get('/register',
+   [
+    'uses' => 'CustomerController@register',
+    'as' => 'customer.register'
    ]);
 });

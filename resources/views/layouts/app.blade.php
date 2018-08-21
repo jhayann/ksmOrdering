@@ -21,6 +21,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{URL::to('css/preload.css')}}" rel="stylesheet">
     <style>
            .title
         {
@@ -117,8 +118,17 @@
         </nav>
 
         <main class="py-4">
+        <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+        </div>
             @yield('content')
         </main>
     </div>
+    <script>
+      $(document).ready(function(){
+        $(".preloader").fadeOut();
+      });
+    </script>
 </body>
 </html>

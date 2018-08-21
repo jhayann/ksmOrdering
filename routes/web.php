@@ -69,6 +69,10 @@ Route::get('/admin', 'dashboardController@index');
 
 Route::group(['prefix' => 'customer'], function()
 {
+    Route::get('/',[
+        'uses' => 'CustomerController@home',
+        'as' => 'customer.showHome'
+    ]);
    Route::get('/login',[
         'uses' => 'CustomerController@index',
         'as' => 'customerLogin'

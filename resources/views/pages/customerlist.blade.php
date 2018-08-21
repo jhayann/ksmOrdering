@@ -1,6 +1,6 @@
 <div class="card-body">
 <h4 class="card-title">Resellers List</h4>
- <h6 class="card-subtitle">Export list to Copy, CSV, Excel, PDF & Print</h6>
+ <h6 class="card-subtitle">Export list to Copy, Excel, PDF & Print</h6>
     <div class="table-responsive">
             <table class="table" id="customer">
                <thead>
@@ -41,7 +41,7 @@
 				],
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'copy', 'excel', 'pdf', 'print'
         ]
     });
       

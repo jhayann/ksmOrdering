@@ -71,8 +71,9 @@ class CustomerController extends Controller
     {
         if(session()->exists('customer_token'))
         {
-       return session('customer_token');
-        } else 
+            return session('customer_token');
+        } 
+        else 
         {
             return redirect()->route('customerLogin');
         }

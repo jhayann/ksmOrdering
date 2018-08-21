@@ -20,6 +20,7 @@
     
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
     <style>
            .title
         {
@@ -40,6 +41,7 @@
   background-position: center;
             height: 300px;
             padding-top: 90px;
+            max-height:300px;
         }
         .title-1
         {

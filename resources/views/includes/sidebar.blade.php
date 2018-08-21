@@ -19,7 +19,6 @@
                    <ul>
                         <li><a  href="javascript:void(0);" id="customerlist">My Resellers</a></li>
                         <li><a href=" {{ route('admin','managereseller')}}">Manage Resellers</a></li>
-                        
                    </ul>                    
                 </li>
                 <li> <a href="#adminlist" class="has-arrow" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Admin</span></a>

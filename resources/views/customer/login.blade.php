@@ -17,10 +17,7 @@
                             <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                            
-                          
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>                          
                             </div>
                         </div>
 
@@ -51,6 +48,7 @@
         </div>
     </div>
 </div>
+<script src="{{ URL::to('js/lib/sweetalert/sweetalert.min.js')}}"></script>
 <script>
     $(document).ready(function(){
         $('#bt').click(function(){
@@ -65,7 +63,11 @@
                         data: {'email': email,'password': pass, _token: "{{Session::token()}}"},
                         success: function(data){
                            if(data.hasOwnProperty('error')){
-                            alert(data['error']);
+                            document.getElementById("email").focus();
+                            sweetAlert("Oops...",  data['error'] , "error");
+                            $('#email').val('');
+                            $('#password').val('');
+                            
                            }
                            if(data.hasOwnProperty('token')){                           
                             createSession(data['token']);

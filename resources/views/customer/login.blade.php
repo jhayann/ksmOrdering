@@ -29,8 +29,7 @@
                             </div>
                         </div>
 
-                  
-
+            
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="button" id="bt" class="btn btn-primary">
@@ -74,7 +73,7 @@
                             
                            }
                            if(data.hasOwnProperty('token')){                           
-                            createSession(data['token']);
+                            createSession(data['token'],email);
                            }
                         },
                         error: function()
@@ -104,12 +103,12 @@
     {
           window.location.href="{{route('customer.register')}}";
     }
-    function createSession(e)
+    function createSession(e,f)
     {
         $.ajax({
             type:"post",
             url:"{{route('setSession')}}",
-            data:{'token':e},
+            data:{'token':e,'email':f},
             success: function()
             {
                 window.location.href="home?token="+e;

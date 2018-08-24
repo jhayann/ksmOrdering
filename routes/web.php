@@ -102,7 +102,7 @@ Route::get('/logout',[
    [
     'uses' => 'CustomerController@store',
     'as' => 'customer.store'
-   ]);
+   ]); 
 
 /*
 |--------------------------------------------------------------------------

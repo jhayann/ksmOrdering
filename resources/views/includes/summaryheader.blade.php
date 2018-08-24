@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="media-body media-text-right">
                                     <h2>847</h2>
-                                    <p class="m-b-0">Customer</p>
+                                    <p class="m-b-0">Reseller</p>
                                 </div>
                             </div>
                         </div>

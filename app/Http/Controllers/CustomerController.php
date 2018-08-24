@@ -25,6 +25,7 @@ class CustomerController extends Controller
         if($request->ajax())
         {
             session(['customer_token' =>$request->token]);
+            session(['customer_email' =>$request->email]);
         }
     }
     /**
@@ -71,7 +72,8 @@ class CustomerController extends Controller
     {
         if(session()->exists('customer_token'))
         {
-            return session('customer_token');
+           // return session('customer_token');
+            return view('pages.customerportal');
         } 
         else 
         {
@@ -87,6 +89,7 @@ class CustomerController extends Controller
     public function logout()
     {
         session()->forget('customer_token');
+        session()->forget('customer_email');
         return redirect()->route('customerLogin');
     }
 

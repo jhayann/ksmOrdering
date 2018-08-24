@@ -22,6 +22,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
     <link href="{{URL::to('css/preload.css')}}" rel="stylesheet">
+    @yield('style')
     <style>
            .title
         {

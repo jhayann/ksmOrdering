@@ -1,6 +1,22 @@
 @extends('layouts.app')
+@section('style')
+<style>
+body 
+{
+height:100vh;
+  background-image: url("{{URL::to('img/header.jpg')}}");
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat:no-repeat;
+}
+
+</style>
+@endsection
 @section('content')
-<div class="container">
+<div class="container bodymain">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

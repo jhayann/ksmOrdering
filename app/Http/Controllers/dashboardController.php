@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Notification;
 use App\Customer;
+use App\Product;
+use App\Helpers\Helper;
+use Image;
 class dashboardController extends Controller
 {
     /**
@@ -132,6 +135,32 @@ class dashboardController extends Controller
 		
 		echo json_encode($json_data);
         
+    }
+    
+    public function storeProduct(Request $request)
+    {
+           $this->validate($request,[
+           'photo' => 'required|image|max:2048',
+                'name' => 'required|string',
+                'categorie' => 'required',
+                'price' => 'required|min:2'
+                
+                ]);
+          $image = $request->file('image');
+            $newname = rand() . '.' . $image->getClientOriginalExtension();
+            $product = new Product();
+            $product->name = $request->name;
+            $product->categorie = $request->categorie;
+            $product->details = null;
+            $product->amount = $request->price;
+            $product->image = $newname;
+            $product->save();
+            Image::make($request->file('photo'))->resizeCanvas(650,350)->save("img/portfolio/thumbnails/".$newname);
+            $request->file('photo')->move("img/portfolio/fullsize", $newname);
+         //copy("img/portfolio/fullsize/".$newname, "img/portfolio/thumbnails/".$newname);
+        
+              return back()->with('success',"Product uploaded successfully!");
+
     }
     
   

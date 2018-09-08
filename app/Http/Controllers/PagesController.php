@@ -5,12 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Customer;
+use App\Notification;
+use App\Product;
 class PagesController extends Controller
 {
      
      public function index() 
         {
-            return view('pages.home');    
+         $products = Product::all();
+            return view('pages.home')->with('products',$products);    
         }
     
       public function adminlist(Request $request)
@@ -39,5 +42,11 @@ class PagesController extends Controller
             $v = view('pages.customerlist')->with('customers',$customer);
             return response($v);
         }
+    }
+    
+    public function createProduct()
+    {
+     $notifications =  Notification::all();
+        return view('pages.addproduct')->with('notifications',$notifications);
     }
 }

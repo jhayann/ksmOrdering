@@ -39,6 +39,7 @@
                 @include('includes.sidebar')
             </div>
             <div class="page-wrapper">
+               @yield('pagetitle')
                 @yield('content')
             </div>
     </div>
@@ -64,7 +65,7 @@
     <script src="{{URL::to('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js')}}"></script>
     <script src="{{URL::to('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js')}}"></script>
     <!-- scripit init-->
-
+    @yield('scripts')
     <!--Custom JavaScript -->
     <script src="{{URL::to('js/custom.min.js')}}"></script>
     <script>

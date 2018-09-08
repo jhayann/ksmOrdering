@@ -13,13 +13,21 @@
 Route::group(['middleware'=> ['web']], function(){
             Route::get('/', [
                     'uses' =>   'PagesController@index',
-                    'as' => 'index'
+                    'as' => 'index.main'
             ]);
             Route::group(['prefix' => 'admin'], function(){
                 Route::get('/{page}',[
                     'uses' => 'dashboardController@index',
                     'as' => 'admin'
-                ]);                    
+                ]);         
+                  Route::get('/product/create',[
+                    'uses' => 'PagesController@createProduct',
+                    'as' => 'create.product'
+                ]);    
+                 Route::post('/product/store',[
+                    'uses' => 'dashboardController@storeProduct',
+                    'as' => 'store.product'
+                ]);    
             }); 
 Route::post('/customerlist',[
         'uses' => 'PagesController@customerlist',

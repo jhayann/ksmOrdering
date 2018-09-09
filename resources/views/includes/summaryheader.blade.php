@@ -22,7 +22,7 @@
                                 </div>
                                 <div class="media-body media-text-right">
                                     <h2>1178</h2>
-                                    <p class="m-b-0">Sales</p>
+                                    <p class="m-b-0">Sales today</p>
                                 </div>
                             </div>
                         </div>

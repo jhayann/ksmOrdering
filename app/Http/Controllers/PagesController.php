@@ -56,6 +56,7 @@ class PagesController extends Controller
     public function createProduct()
     {
      $notifications =  Notification::all();
-        return view('pages.addproduct')->with('notifications',$notifications);
+       $success = "";
+        return view('pages.addproduct',compact('success'))->with('notifications',$notifications);
     }
 }

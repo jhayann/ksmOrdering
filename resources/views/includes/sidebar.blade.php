@@ -15,6 +15,12 @@
                             <li><a href="#productlist" id="productlist">Manage Product</a></li>
                        </ul>
                 </li>
+                <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-cart-plus"></i><span class="hide-menu">Orders <span class="label label-rouded label-danger pull-right">6</span></span></a>
+                       <ul>
+                           <li><a href="{{ route('create.product')}}">Pending Orders <span class="label label-rounded label-success">6</span></a></li>
+                            <li><a href="#productlist" id="productlist">Order History</a></li>
+                       </ul>
+                </li>
                 <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Resellers</span></a>
                    <ul>
                         <li><a  href="javascript:void(0);" id="customerlist">Manage Resellers</a></li>

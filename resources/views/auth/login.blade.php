@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
             <div class="title">
-                   <p class="title-1">SIGN IN</p>
+                   <p class="title-1" style="text-shadow: 5px 5px 20px #0b6aa8;">ADMINISTRATOR SIGN IN</p>
            </div>
 
                 <div class="card-body">

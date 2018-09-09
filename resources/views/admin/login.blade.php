@@ -79,7 +79,7 @@
 @section('contents')
 <div class="preloader">
         <svg class="circular" viewBox="25 25 50 50">
-			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg> 
 </div>
 <div class="row" id="main-">
     <div class="col-md-6 right ">
@@ -87,7 +87,7 @@
     <div class="col-md-6 left">
        <div class="card">
            <div class="title">
-                   <p class="title-1">SIGN IN</p>
+                   <p class="title-1" style="text-shadow: 5px 5px 20px #0b6aa8;">SIGN INs</p>
            </div>
             <div class="card-body">
        <form method="POST" action="{{ route('login') }}" aria-label="{{ __('Login') }}">

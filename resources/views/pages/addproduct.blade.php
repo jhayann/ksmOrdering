@@ -53,6 +53,12 @@
             <div class="card-body container" id="ajax">
                      <div class="card-header">Add product:</div>
                <div class="productform">
+                 @if($success)
+                     <div class="alert alert-primary alert-dismissible fade show">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                        <strong>New product added!</strong>{{$success}}
+                    </div>
+                 @endif
                   @if ($errors->has('photo'))
                             <div class="alert alert-danger">      
                                         <strong>{{ $errors->first('photo') }}</strong>

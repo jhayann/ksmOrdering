@@ -48,7 +48,7 @@
                         <!-- Profile -->
                  
 						<li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ URL::to('img/users/avatar-3.jpg')}}" alt="user" class="profile-pic" /></a>
+                           <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ URL::to('img/users/avatar-3.jpg')}}" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right animated slideInRight">
                                 <ul class="dropdown-user">
                                     <li>
@@ -61,8 +61,7 @@
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
-                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="{{route('index.main')}}"><i class="ti-wallet"></i> View Homepage</a></li>
+                                    <li><a href="#"><i class="ti-user"></i> My Profile</a></li>                                
                                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{{route('index.main')}}"><i class="ti-settings"></i> View home</a></li>

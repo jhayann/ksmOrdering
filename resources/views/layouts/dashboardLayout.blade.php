@@ -72,18 +72,11 @@
         $(document).ready(function(){
             $('#adminlist').click(function(){
                 poper('Please wait!','Working on it now ...');
-                $.ajax({
-                        type:"post",
-                        url:"{{route('adminlist')}}",
-                        data: {_token:"{{ Session::token()}}"},
-                        success: function(data) {
-                            $('#ajax').html(data);
-                        }, 
-                        error: function(){
-                             sweetAlert("Oops...", "Something went wrong !!", "error");
-                        }
-                       
-                });
+                displayAdmin();
+            });
+            $('#productlist').click(function(){
+                poper('Please wait!','Working on it now ...');
+                displayProduct();
             });
             $('#create_admin').click(function(){
                     $.ajax({
@@ -101,6 +94,38 @@
             });
            
         });
+        
+        function displayAdmin()
+        {
+               $.ajax({
+                        type:"post",
+                        url:"{{route('adminlist')}}",
+                        data: {_token:"{{ Session::token()}}"},
+                        success: function(data) {
+                            $('#ajax').html(data);
+                        }, 
+                        error: function(){
+                             sweetAlert("Oops...", "Something went wrong !!", "error");
+                        }
+                       
+                });
+        }
+        
+        function displayProduct()
+        {
+             $.ajax({
+                        type:"post",
+                        url:"{{route('productlist')}}",
+                        data: {_token:"{{ Session::token()}}"},
+                        success: function(data) {
+                            $('#ajax').html(data);
+                        }, 
+                        error: function(){
+                             sweetAlert("Oops...", "Something went wrong !!", "error");
+                        }
+                       
+                });
+        }
 
         $('#customerlist').click(function(){
                 poper('Please wait!','Working on it now ...');
@@ -119,12 +144,12 @@
            
        
         
-        function confirmRem() 
+        function confirmRem(e) 
         {
                 $('.sweet-success-cancel').click(function(){
                                     swal({
             title: "Are you sure to delete ?",
-            text: "You will not be able to recover this imaginary file !!",
+            text: "You will not be able to recover this admin profile !!",
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -135,10 +160,25 @@
         },
         function(isConfirm){
             if (isConfirm) {
-                swal("Deleted !!", "Hey, your imaginary file has been deleted !!", "success");
+               swal("Deleted !!", "Hey, the admin profile has been deleted !!", "success");
+                console.log(e);
+                $.ajax({
+                    url:"{{ route('deleteadmin') }}",
+                    type:"post",
+                    data:{_token:"{{Session::token()}}",id:e},
+                    success: function()
+                    {
+                        displayAdmin();
+                    },
+                    error: function()
+                    {
+                    sweetAlert("Oops...", "Something went wrong  while deleting the admin profile", "error");
+                    }
+
+                });
             }
             else {
-                swal("Cancelled !!", "Hey, your imaginary file is safe !!", "error");
+                swal("Cancelled !!", "Hey, the admin profile is safe !!", "error");
             }
         });
                 });

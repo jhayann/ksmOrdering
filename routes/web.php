@@ -49,6 +49,15 @@ Route::post('/insert_admin',[
                     'uses' => 'dashboardController@insertadmin',
                     'as' => 'insert_admin'
 ]); 
+Route::post('delete',[
+                    'uses' => 'dashboardController@deleteadmin',
+                    'as' => 'deleteadmin'
+]); 
+ Route::post('/productlist',[
+                    'uses' => 'PagesController@productlist',
+                    'as' => 'productlist'
+            ]);
+
 });
  
 /*

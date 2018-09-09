@@ -25,6 +25,15 @@ class PagesController extends Controller
                 return response($v);
             }
         }
+     public function productlist(Request $request)
+        {
+            if($request->ajax())
+            {
+                $products= Product::all(); 
+                $v = view('pages.listproduct')->with('products',$products);
+                return response($v);
+            }
+        }
     
      public function createadmin(Request $request) // return view of register blade to create admin
         {

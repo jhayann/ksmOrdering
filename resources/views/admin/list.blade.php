@@ -18,7 +18,7 @@
                             <td>{{ $admin->id}} </td>
                             <td>{{ $admin->name}} </td>
                             <td>{{ $admin->email}} </td>
-                            <td><button onclick="confirmRem()" class="btn btn-warning btn sweet-success-cancel">Remove</button>
+                            <td><button onclick="confirmRem('{{$admin->id}}')" class="btn btn-warning btn sweet-success-cancel">Remove</button>
                             <button onclick="" class="btn btn-success ">Edit</button></td>
                          </tr>
         

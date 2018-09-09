@@ -55,14 +55,14 @@
                                         <div class="dw-user-box">
                                             <div class="u-img"><img src="{{ URL::to('img/users/avatar-3.jpg')}}" alt="user"></div>
                                             <div class="u-text">
-                                                <h4>Rey Jhon</h4>
-                                                <p class="text-muted">reyjhonbaquirin@yahoo.com</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
+                                                <h4>{{Auth::user()->name}}</h4>
+                                                <p class="text-muted">{{Auth::user()->email}}</p><a href="pages-profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                                    <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
+                                    <li><a href="{{route('index.main')}}"><i class="ti-wallet"></i> View Homepage</a></li>
                                     <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="{{route('index.main')}}"><i class="ti-settings"></i> View home</a></li>

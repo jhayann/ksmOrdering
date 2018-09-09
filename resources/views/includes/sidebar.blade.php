@@ -12,7 +12,7 @@
                 <li> <a class="has-arrow" href="#" aria-expanded="false"><i class="fa fa-suitcase"></i><span class="hide-menu">Products</span></a>
                        <ul>
                            <li><a href="{{ route('create.product')}}">Add Product</a></li>
-                            <li><a href="#">Manage Product</a></li>
+                            <li><a href="#productlist" id="productlist">Manage Product</a></li>
                        </ul>
                 </li>
                 <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-users"></i><span class="hide-menu">Resellers</span></a>

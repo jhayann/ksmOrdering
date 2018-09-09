@@ -146,7 +146,7 @@ class dashboardController extends Controller
                 'price' => 'required|min:2'
                 
                 ]);
-          $image = $request->file('image');
+          $image = $request->file('photo');
             $newname = rand() . '.' . $image->getClientOriginalExtension();
             $product = new Product();
             $product->name = $request->name;
@@ -161,6 +161,12 @@ class dashboardController extends Controller
         
               return back()->with('success',"Product uploaded successfully!");
 
+    }
+    public function deleteadmin(Request $request) 
+    {
+        $id = $request->id;
+        $admin = new User();
+        User::where('id',$id)->delete();
     }
     
   

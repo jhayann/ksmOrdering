@@ -159,9 +159,8 @@ class dashboardController extends Controller
             $request->file('photo')->move("img/portfolio/fullsize", $newname);
          //copy("img/portfolio/fullsize/".$newname, "img/portfolio/thumbnails/".$newname);
         
-            $notifications =  Notification::all();
-        $success = " Your new product has been added!";
-        return view('pages.addproduct',compact('success','notifications'));
+       
+     return back()->with('success',"Your new product has been added!");
 
     }
     public function deleteadmin(Request $request) 

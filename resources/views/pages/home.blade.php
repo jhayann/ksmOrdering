@@ -85,7 +85,7 @@
                @foreach($products as $product)
             <div class="col-lg-4 col-sm-6">
             <a class="portfolio-box" href="img/portfolio/fullsize/{{$product->image}}">
-              <img class="img-fluid" src="img/portfolio/thumbnails/{{$product->image}}" alt="">
+              <img class="img-fluid rounded-circle" src="img/portfolio/thumbnails/{{$product->image}}" alt="">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
@@ -105,7 +105,7 @@
       </div>
     </section>
 
-    <section class="bg-dark text-white">
+    <section class="bg-primary text-white">
       <div class="container text-center">
         <h2 class="mb-4">Free Delivery at your doorsteps!</h2>
         <a class="btn btn-light btn-xl sr-button" href="{{ route('customer.register')}}">Register now!</a>

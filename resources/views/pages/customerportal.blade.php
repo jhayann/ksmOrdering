@@ -137,7 +137,32 @@
         <div class="prof"> <span class="card-title">{{ session('customer_email')}}</span>
         </div>
     </div>
+<ul class="nav nav-pills nav-fill">
+    <li class="nav-item">
+        <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>
+    </li>
+    <li class="nav-item">
+       <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-products" role="tab" aria-controls="pills-products" aria-selected="false">Products</a>
+    </li>
+    <li class="nav-item">
+       <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-orders" role="tab" aria-controls="pills-orders" aria-selected="false">My Orders</a>
+    </li>
+    <li class="nav-item">
+         <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-points" role="tab" aria-controls="pills-points" aria-selected="false">Points</a>
+    </li>
+</ul>
+
+<div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+     <a href="logout?token={{session('customer_token')}}">LOGOUT</a>
+    </div>
+    <div class="tab-pane fade" id="pills-products" role="tabpanel" aria-labelledby="pills-products-tab">...</div>
+    <div class="tab-pane fade" id="pills-orders" role="tabpanel" aria-labelledby="pills-order-tab">...</div>
+     <div class="tab-pane fade" id="pills-points" role="tabpanel" aria-labelledby="pills-points-tab">...</div>
+</div>
+      
         </div>
+  
     </div>
 
 

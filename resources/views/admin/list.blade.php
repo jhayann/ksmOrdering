@@ -5,7 +5,9 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Firstname</th>
+                    <th>Middlename</th>
+                    <th>Lastname</th>
                     <th>Email</th>
                     <th>Action</th>
                 </tr>
@@ -16,7 +18,9 @@
         
                            <tr>
                             <td>{{ $admin->id}} </td>
-                            <td>{{ $admin->name}} </td>
+                            <td>{{ $admin->firstname}} </td>
+                            <td>{{ $admin->middlename}} </td>
+                            <td>{{ $admin->lastname}} </td>
                             <td>{{ $admin->email}} </td>
                             <td><button onclick="confirmRem('{{$admin->id}}')" class="btn btn-warning btn sweet-success-cancel">Remove</button>
                             <button onclick="" class="btn btn-success ">Edit</button></td>

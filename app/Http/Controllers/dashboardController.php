@@ -77,12 +77,13 @@ class dashboardController extends Controller
    // print_r($request->all());
        
         $columns = array(
-			0 => 'name',
-			1 => 'username',
-			2 => 'email',
-			3 => 'address',
-            4 => 'number'
-		);
+            0 => 'firstname',
+            1 => 'middlename',
+			2 => 'lastname',
+			3 => 'email',
+			4 => 'address',
+            5 => 'number'
+		); 
         $totalData =Customer::count();
 		$limit = $request->input('length');
 		$start = $request->input('start');
@@ -98,18 +99,19 @@ class dashboardController extends Controller
 			$totalFiltered = Customer::count();
 		}else{
 			$search = $request->input('search.value');
-			$posts = Customer::where('name', 'like', "%{$search}%")
-                            ->orWhere('username','like',"%{$search}%")
+			$posts = Customer::where('firstname', 'like', "%{$search}%")
+                            ->orWhere('middlename','like',"%{$search}%")
+                            ->orWhere('lastname','like',"%{$search}%")
 							->orWhere('email','like',"%{$search}%")
-							->orWhere('number','like',"%{$search}%")
 							->offset($start)
 							->limit($limit)
 							->orderBy($order, $dir)
 							->get();
-			$totalFiltered = Customer::where('name', 'like', "%{$search}%")
-                            ->orWhere('username','like',"%{$search}%")
+            $totalFiltered = Customer::where('firstname', 'like', "%{$search}%")
+                             ->orWhere('middlename','like',"%{$search}%")
+                            ->orWhere('lastname','like',"%{$search}%")
 							->orWhere('email','like',"%{$search}%")
-                	        ->orWhere('number','like',"%{$search}%")
+                	       
 							->count();
 		}
         
@@ -117,8 +119,9 @@ class dashboardController extends Controller
         //date('d-m-Y H:i:s',strtotime($r->created_at));
         if($posts){
 			foreach($posts as $r){
-				$nestedData['name'] = $r->name;
-                $nestedData['username'] = $r->username;
+                $nestedData['firstname'] = $r->firstname;
+                $nestedData['middlename'] = $r->middlename;
+                $nestedData['lastname'] = $r->lastname;
 				$nestedData['email'] = $r->email;
 				$nestedData['address'] = $r->address;
 				$nestedData['number'] = $r->number;

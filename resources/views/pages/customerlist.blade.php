@@ -5,8 +5,9 @@
             <table class="table" id="customer">
                <thead>
                 <tr>
-                    <th>Reseller Name</th>
-                    <th>Username</th>
+                    <th>Firstname</th>
+                    <th>Middlename</th>
+                    <th>Lastname</th>
                     <th>Email</th>
                     <th>Address</th>
                     <th>Contact no.</th>
@@ -33,15 +34,16 @@
 					"data":{"_token":"<?= csrf_token() ?>"}
 				},
 				"columns":[
-					{"data":"name"},
-					{"data":"username"},
+					{"data":"firstname"},
+					{"data":"middlename"},
+                    {"data":"lastname"},
 					{"data":"email","orderable":false},
                     {"data":"address","orderable":false},
 					{"data":"number","searchable":false,"orderable":false}
 				],
         dom: 'Bfrtip',
         buttons: [
-            'copy', 'excel', 'pdf', 'print'
+            'copy', 'excel', 'pdf', 'csv', 'print'
         ]
     });
       

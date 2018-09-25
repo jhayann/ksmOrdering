@@ -15,7 +15,7 @@
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="mb-5"  style="color:white!important;text-shadow: 5px 5px 5px #000000;padding-top:80px;">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+            <p class="mb-5"  style="color:white!important;text-shadow: 5px 5px 5px #000000;padding-top:80px;">KSM Crystal Water help you with your small business.</p>
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
           </div>
         </div>
@@ -26,10 +26,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
+            <h2 class="section-heading text-white">KSM Crystal Water got what you need!</h2>
             <hr class="light my-4">
-            <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            <p class="text-faded mb-4">KSM Crystal Water provides what you really need. We prioritize healthy and clean mineral water.</p>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started with our services!</a>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">At Your Service</h2>
+            <h2 class="section-heading">KSM Crystal Water At Your Service</h2>
             <hr class="my-4">
           </div>
         </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
+              <i class="fa fa-4x fa-truck text-primary mb-3 sr-icons"></i>
               <h3 class="mb-3">Ready to Deliver</h3>
               <p class="text-muted mb-0">Just place an order online or Walk in. We'll proccess it right away</p>
             </div>

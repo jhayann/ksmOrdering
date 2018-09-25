@@ -112,16 +112,18 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-               'name' => 'required|string|max:255',
-                'username' => 'required|string|unique:customers',
+               'firstname' => 'required|string|max:100',
+                'middlename' => 'required|string|max:100',
+                'lastname' => 'required|string|max:100',
                 'email' => 'required|string|email|max:255|unique:customers',
                 'password' => 'required|string|min:6|confirmed' ,
                 'address' => 'required|string',
                 'cpnumber'=>'required|min:11'
         ]);
         $customer = new Customer();
-        $customer->name = $request->name;
-        $customer->username = $request->username;
+        $customer->firstname = $request->firstname;
+        $customer->middlename = $request->middlename;
+        $customer->lastname = $request->lastname;
         $customer->email = $request->email;
         $customer->password = bcrypt($request->password);
         $customer->address = $request->address;

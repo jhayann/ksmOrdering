@@ -146,7 +146,9 @@ class dashboardController extends Controller
            'photo' => 'required|image|max:2048',
                 'name' => 'required|string',
                 'categorie' => 'required',
-                'price' => 'required|min:2'
+                   'volume' => 'required',
+                'price' => 'required|min:2',
+                   'details' => 'required'
                 
                 ]);
           $image = $request->file('photo');
@@ -154,7 +156,8 @@ class dashboardController extends Controller
             $product = new Product();
             $product->name = $request->name;
             $product->categorie = $request->categorie;
-            $product->details = null;
+            $product->volume = $request->volume;
+            $product->details = $request->details;
             $product->amount = $request->price;
             $product->image = $newname;
             $product->save();

@@ -12,7 +12,7 @@ class PagesController extends Controller
      
      public function index() 
         {
-         $products = Product::all();
+         $products = Product::where('active',1)->get();
             return view('pages.home')->with('products',$products);    
         }
     

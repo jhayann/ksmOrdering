@@ -111,7 +111,7 @@
             data:{'token':e,'email':f},
             success: function()
             {
-                window.location.href="home?token="+e;
+                window.location.href="desktop/home?token="+e;
             }
         });
     }

@@ -128,7 +128,7 @@ height:100vh;
                             </div>
                         </div>
                          <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('CP no.') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Contact no.') }}</label>
 
                             <div class="col-md-6">
                                 <input id="cpnumber" type="text" class="form-control{{ $errors->has('cpnumber') ? ' is-invalid' : '' }}" name="cpnumber" value="{{ old('cpnumber') }}" required autofocus>

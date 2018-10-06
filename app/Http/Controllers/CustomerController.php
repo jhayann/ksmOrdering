@@ -9,6 +9,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use App\Customer;
 use Config;
 use Session;
+use App\Product;
 class CustomerController extends Controller
 {
 
@@ -81,6 +82,18 @@ class CustomerController extends Controller
         }
     }
 
+     public function DesktopHome(Request $request)
+    {
+        if(session()->exists('customer_token'))
+        {
+           // return session('customer_token');
+            return view('customer.home');
+        } 
+        else 
+        {
+            return redirect()->route('customerLogin');
+        }
+    }
     public function register()
     {
         return view('customer.register');
@@ -176,5 +189,16 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         //
+    }
+    
+    public function showProduct()
+    {
+        $product = Product::all();
+        return view('customer.product')->with('products',$product);
+    }
+     public function desktopProfile()
+    {
+        
+        return view('customer.profile');
     }
 }

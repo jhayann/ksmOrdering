@@ -17,9 +17,11 @@ class CreateProductsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('categorie');
+            $table->string('volume');
             $table->text('details');
             $table->double('amount',8,2);
             $table->string('image');
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }

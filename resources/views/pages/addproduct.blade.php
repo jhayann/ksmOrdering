@@ -66,7 +66,7 @@
                     @endif
                    <form method="post" enctype="multipart/form-data" action="{{route('store.product')}}">
                   <div class="form-group">
-                            <label for="name" class="col-form-label text-md-right">{{ __('Name') }}</label> 
+                            <label for="name" class="col-form-label text-md-right">{{ __('Product name') }}</label> 
                                 <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
@@ -89,6 +89,16 @@
                                     </span>
                                 @endif
                         </div>
+                        <div class="form-group">
+                            <label for="volume" class="col-form-label text-md-right">{{ __('Volume') }}</label> 
+                                <input id="volume" type="text" class="form-control{{ $errors->has('volume') ? ' is-invalid' : '' }}" name="volume" value="{{ old('volume') }}" required autofocus>
+
+                                @if ($errors->has('volume'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('volume') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
                          <div class="form-group">
                             <label for="name" class="col-form-label text-md-right">{{ __('price') }}</label> 
                                 <input id="price" type="number" class="form-control{{ $errors->has('price') ? ' is-invalid' : '' }}" name="price" value="{{ old('price') }}" required autofocus>
@@ -99,7 +109,16 @@
                                     </span>
                                 @endif
                         </div>
-                        
+                        <div class="form-group">
+                            <label for="details" class="col-form-label text-md-right">{{ __('Details') }}</label> 
+                                <input id="details" type="text" class="form-control{{ $errors->has('details') ? ' is-invalid' : '' }}" name="details" value="{{ old('details') }}" required autofocus>
+
+                                @if ($errors->has('details'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('details') }}</strong>
+                                    </span>
+                                @endif
+                        </div>
                      
         
                  

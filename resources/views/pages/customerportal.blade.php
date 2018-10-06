@@ -126,17 +126,17 @@
     </div>
     <div id="main-wrapper">
         <div class="mymain">
-        <div class="card hovercard">
+   <!--     <div class="card hovercard">
         <div class="card-background">
             <img class="card-bkimg" alt="" src="{{URL::to('img/users/4.jpg')}}">
-            <!-- http://lorempixel.com/850/280/people/9/ -->
+            <!-- http://lorempixel.com/850/280/people/9/ 
         </div>
         <div class="useravatar">
             <img alt="" src="{{URL::to('img/users/4.jpg')}}">
         </div>
         <div class="prof"> <span class="card-title">{{ session('customer_email')}}</span>
         </div>
-    </div>
+    </div> -->
 <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
         <a class="nav-link active" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Profile</a>

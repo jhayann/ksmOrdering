@@ -18,11 +18,13 @@ class CreateCustomersTable extends Migration
             $table->string('firstname');
             $table->string('middlename');
             $table->string('lastname');
+            $table->string('birthdate')->nullable();
+             $table->string('gender')->nullable();
             $table->string('email');
             $table->string('password');
             $table->text('address');
             $table->string('number');
-            $table->string('profileimg');
+            $table->string('profileimg')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

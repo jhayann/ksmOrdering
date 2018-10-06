@@ -86,41 +86,56 @@ Route::get('/admin', 'dashboardController@index');
 
 Route::group(['prefix' => 'customer'], function()
 {
-    Route::get('/',[
-        'uses' => 'CustomerController@home',
-        'as' => 'customer.showHome'
-    ]);
-   Route::get('/login',[
-        'uses' => 'CustomerController@index',
-        'as' => 'customerLogin'
-   ]);
-   Route::post('/session',[
-    'uses' => 'CustomerController@setSession',
-    'as' => 'setSession'
+Route::get('/',[
+'uses' => 'CustomerController@home',
+'as' => 'customer.showHome'
 ]);
-   Route::get('/home',[
-    'uses' => 'CustomerController@home',
-    'as' => 'customer.showHome'
+Route::get('/login',[
+'uses' => 'CustomerController@index',
+'as' => 'customerLogin'
+]);
+Route::post('/session',[
+'uses' => 'CustomerController@setSession',
+'as' => 'setSession'
+]);
+Route::get('/home',[
+'uses' => 'CustomerController@home',
+'as' => 'customer.showHome'
 ]);
 Route::get('/logout',[
-    'uses' => 'CustomerController@logout',
-    'as' => 'customer.logout'
+'uses' => 'CustomerController@logout',
+'as' => 'customer.logout'
 ]);
-   Route::post('/auth',[
-    'uses' => 'CustomerController@authenticate',
-    'as' => 'customerAuth'
-   ]);
-   Route::get('/register',
-   [
-    'uses' => 'CustomerController@register',
-    'as' => 'customer.register'
-   ]);
-  Route::post('/create',
-   [
-    'uses' => 'CustomerController@store',
-    'as' => 'customer.store'
-   ]); 
-
+Route::get('/desktop/home',[
+'uses' => 'CustomerController@desktopHome',
+'as' => 'customer.showDesktopHome'
+]);
+Route::get('/desktop/profile',[
+'uses' => 'CustomerController@desktopProfile',
+'as' => 'customer.showDesktopProfile'
+]);
+Route::get('/desktop/products',[
+'uses' => 'CustomerController@showProduct',
+'as' => 'customer.showDesktopProduct'
+]);
+Route::get('desktop/logout',[
+'uses' => 'CustomerController@logout',
+'as' => 'customer.logout'
+]);
+Route::post('/auth',[
+'uses' => 'CustomerController@authenticate',
+'as' => 'customerAuth'
+]);
+Route::get('/register',
+[
+'uses' => 'CustomerController@register',
+'as' => 'customer.register'
+]);
+Route::post('/create',
+[
+'uses' => 'CustomerController@store',
+'as' => 'customer.store'
+]);
 /*
 |--------------------------------------------------------------------------
 |Customer Password Reset

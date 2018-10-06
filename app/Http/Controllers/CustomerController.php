@@ -18,7 +18,7 @@ class CustomerController extends Controller
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the authenticate method. We don't want to prevent
         // the user from retrieving their token if they don't already have it
-        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register','store']]);
+        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register','store','update']]);
     }
 
     public function setSession(Request $request)
@@ -175,9 +175,42 @@ class CustomerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      
+          $this->validate($request,[
+                'firstname' => 'required|string',
+                'middlename' => 'required|string',
+                'lastname' => 'required|string',
+                'birthdate' => 'required',
+                'gender' => 'required',
+                'email' => 'required|string|email|max:255',
+                'address' => 'required',
+                'contact' => 'required|min:11'              
+                ]);
+          $image = $request->file('photo');
+        if($image != null){
+        $newname =$request->firstname . '-' . rand() . '.' . $image->getClientOriginalExtension();
+        } 
+    
+        $customer = Customer::find($request->id);
+        $customer->firstname = $request->firstname;
+        $customer->middlename = $request->middlename;
+        $customer->lastname = $request->lastname;
+        $customer->birthdate = $request->birthdate;
+        $customer->gender = $request->gender;
+        $customer->email = $request->email;
+        $customer->address = $request->address;
+        $customer->number = $request->contact;
+        if($image != null){
+        $customer->profileimg = $newname;
+        }
+        $customer->save();
+        if($image != null) {
+        $request->file('photo')->move("img/users", $newname);
+        }
+        return back()->with('success',"Your profile has been updated!");
+        
     }
 
     /**
@@ -198,7 +231,7 @@ class CustomerController extends Controller
     }
      public function desktopProfile()
     {
-        
-        return view('customer.profile');
+        $customer =      Customer::all();
+        return view('customer.profile')->with('customer',$customer);
     }
 }

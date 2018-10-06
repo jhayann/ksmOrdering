@@ -136,6 +136,11 @@ Route::post('/create',
 'uses' => 'CustomerController@store',
 'as' => 'customer.store'
 ]);
+    Route::post('/update',
+[
+'uses' => 'CustomerController@update',
+'as' => 'customer.update'
+]);
 /*
 |--------------------------------------------------------------------------
 |Customer Password Reset

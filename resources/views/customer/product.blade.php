@@ -8,67 +8,55 @@
         </ol>
     </nav>
     <div class="card-columns">
+    @if(count($products)>0)
+    @foreach($products as $product)
+    <a href="#" data-toggle="modal" data-target="#{{$product->id}}">
   <div class="card">
-    <img class="card-img-top" src=".../100px160/" alt="Card image cap">
+    <img class="card-img-top" src="{{URL::to('img/portfolio/fullsize')}}/{{$product->image}}" alt="Card image cap">
     <div class="card-body">
-      <h5 class="card-title">Card title that wraps to a new line</h5>
-      <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <h5 class="card-title">{{$product->name. ", Price:". $product->amount}}</h5>
+      <small> {{$product->categorie}}</small>
+      <p class="card-text">Volume: {{$product->volume}}<br>
+           {{$product->details}}
+        </p>
     </div>
   </div>
-  <div class="card p-3">
-    <blockquote class="blockquote mb-0 card-body">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src=".../100px160/" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card bg-primary text-white text-center p-3">
-    <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-      <footer class="blockquote-footer">
-        <small>
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card text-center">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img" src=".../100px260/" alt="Card image">
-  </div>
-  <div class="card p-3 text-right">
-    <blockquote class="blockquote mb-0">
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-      <footer class="blockquote-footer">
-        <small class="text-muted">
-          Someone famous in <cite title="Source Title">Source Title</cite>
-        </small>
-      </footer>
-    </blockquote>
-  </div>
-  <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
-      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        </a>
+  <div class="modal fade" id="{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Order {{$product->name}}</h5>
+     <!--      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="row">
+                <div class="col-sm-5">
+                    <img class="card-img-top" style="width:200px;height:200px;" src="{{URL::to('img/portfolio/fullsize')}}/{{$product->image}}" alt="Card image cap">
+                </div>
+                <div class="col-sm-7">
+                    <h4 style="color:green"><i class="fa fa-shopping-bag"></i> <b>{{$product->name}}</b></h4>
+                    <h4><i class="fa fa-money"></i> Price: <b>{{$product->amount}}</b></h4>
+                    Categorie: {{$product->categorie}}
+                      <p class="card-text">Volume: {{$product->volume}}<br>
+                      Description:<br>
+           {{$product->details}}
+        </p>
+                </div>
+                
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"> <i class="fa fa-shopping-cart"></i> Place order now</button>
+      </div>
     </div>
   </div>
 </div>
+  @endforeach
+  @endif
+</div>
+
 @endsection

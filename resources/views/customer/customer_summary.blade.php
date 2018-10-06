@@ -23,7 +23,7 @@
                                     <span><i class="fa fa-money f-s-40 color-primary"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>20</h2>
+                                    <h2>00</h2>
                                     <p class="m-b-0">Purchases</p>
                                 </div>
                             </div>                      
@@ -38,7 +38,7 @@
                                     <span><i class="fa fa-shopping-cart f-s-40 color-pink"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>20</h2>
+                                    <h2>00</h2>
                                     <p class="m-b-0">Total orders</p>
                                 </div>
                             </div>                       

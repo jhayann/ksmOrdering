@@ -131,7 +131,7 @@
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">feedback@ksmwaters.com</a>
+              <a href="mailto:your-email@your-domain.com">ksmcrystalwater@gmail.com</a>
             </p>
           </div>
         </div>

@@ -1,4 +1,4 @@
-@extends('customer.home')
+@extends('customer.master')
 @section('contents')
 
   <nav aria-label="breadcrumb">
@@ -12,9 +12,8 @@
                                         <strong>Success!</strong> {{ session('success') }}
                     </div>
             @endif
-             
-                 
-    
+     
+                
   <style>
       .avatar
       {
@@ -42,7 +41,11 @@
 
       <div class="text-center">
         <img src="{{$customer[0]->profileimg == null ? '../../img/users/avatar_2x.png' : URL::to('img/users')}}/{{$customer[0]->profileimg}}" class="avatar img-circle img-thumbnail" alt="avatar">
-       
+             @if($customer[0]->status == null)
+                 <span class="badge badge-warning">Account not verified</span>
+                 @else
+          <span class="badge badge-success"><b>Account verified</b></span>
+           @endif
             @if ($errors->has('photo'))
                                     <span class="" style="font-size:12px;color:red" role="alert">
                                         <strong>Please select your profile picture</strong>
@@ -95,17 +98,27 @@
                       <div class="form-group">
                           <div class="col-xs-6">
                              <label for="birthdate"><h4>Birthdate</h4></label>
-                              <input type="date" class="form-control" name="birthdate" id="birthdate" placeholder="enter mobile birthdate" title="Enter your birthdate" value="{{$customer[0]->birthdate}}">
+                              <input type="date" class="form-control {{ $errors->has('birthdate') ? ' is-invalid' : '' }}" name="birthdate" id="birthdate" placeholder="enter mobile birthdate" title="Enter your birthdate" value="{{$customer[0]->birthdate}}">
+                              @if ($errors->has('birthdate'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('birthdate') }}</strong>
+                                    </span>
+                                @endif
                           </div>
                       </div>
                       <div class="form-group">
                               <div class="col-xs-6">   
                                  <label for="gender"><h4>Gender</h4></label>
-                                <select class="custom-select custom-select-md" name="gender">
-                                <option  {{ $customer[0]->gender == null ? 'selected':'' }} >Select your gender</option>
+                                <select class="custom-select custom-select-md {{ $errors->has('gender') ? ' is-invalid' : '' }}" name="gender">
+                                <option value="" {{ $customer[0]->gender == null ? 'selected':'' }} >Select your gender</option>
                                 <option value="male" {{ $customer[0]->gender == "male" ? 'selected':'' }} >Male</option>
                                     <option value="female"  {{ $customer[0]->gender == "female" ? 'selected':'' }} >Female</option>                                   
                                 </select>
+                                 @if ($errors->has('gender'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('gender') }}</strong>
+                                    </span>
+                                @endif
                           </div>
                       </div>
                  

@@ -16,7 +16,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class Customer extends Authenticatable
 {
     use Notifiable;
-
+protected $primaryKey = 'id';
+protected $table = 'customers';
     /**
      * The attributes that are mass assignable.
      *

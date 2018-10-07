@@ -22,9 +22,11 @@ class CreateCustomersTable extends Migration
              $table->string('gender')->nullable();
             $table->string('email');
             $table->string('password');
-            $table->text('address');
+            $table->string('address');
             $table->string('number');
             $table->string('profileimg')->nullable();
+            $table->string('activation_code')->nullable();
+            $table->string('status')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

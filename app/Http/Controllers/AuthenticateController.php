@@ -27,13 +27,13 @@ class AuthenticateController extends Controller
     }    
     public function authenticate(Request $request)
     {
-       
-        $credentials = $request->only('username','email', 'password');
+       /*
+        $credentials = $request->only('email', 'password');
         
         try {
-         Config::set('jwt.user', 'App\Customer'); 
+          Config::set('jwt.user', 'App\Customer'); 
 		  Config::set('auth.providers.users.model', \App\Customer::class);
-            // verify the credentials and create a token for the user
+           
             if (! $token = JWTAuth::attempt($credentials)) {
                 
                 return response()->json(['error' => 'invalid_credentials'], 401);
@@ -45,6 +45,9 @@ class AuthenticateController extends Controller
 
         // if no errors are encountered we can return a JWT
         return response()->json(compact('token'));
+        */
+        $credentials = $request->only('email', 'password');
+        return ($credentials);
     }
     
     public function getProfile(Request $request) 

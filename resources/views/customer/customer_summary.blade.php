@@ -46,4 +46,20 @@
                     </div>                   
                 </div>
             </div>
+            <br>
+              @if($customer[0]->status == null)
+            <div class="card">
+                <div class="card-header">Messages</div><br>
+                <div class="card-body">
+                 
+                       <div class="alert alert-danger">
+                           <strong>Your account is not yet activated.! Please verify your account using the activation link that we send to your email.</strong>
+                       </div>
+                       
+                     
+                           
+                   
+                </div>
+            </div>
+            @endif
         </div>

@@ -176,5 +176,12 @@ class dashboardController extends Controller
         User::where('id',$id)->delete();
     }
     
+    public function changestatProduct(Request $request)
+    {
+        $product = Product::find($request->id);
+        $product->active = $request->status;
+        $product->save();
+    }
+    
   
 }

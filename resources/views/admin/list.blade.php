@@ -22,7 +22,10 @@
                             <td>{{ $admin->middlename}} </td>
                             <td>{{ $admin->lastname}} </td>
                             <td>{{ $admin->email}} </td>
-                            <td><button onclick="confirmRem('{{$admin->id}}')" class="btn btn-warning btn sweet-success-cancel">Remove</button>
+                            <td>
+                            @if($admin->id != '1') 
+                            <button onclick="confirmRem('{{$admin->id}}')" class="btn btn-warning btn sweet-success-cancel">Remove</button>
+                            @endif
                             <button onclick="" class="btn btn-success ">Edit</button></td>
                          </tr>
         

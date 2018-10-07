@@ -28,6 +28,10 @@ Route::group(['middleware'=> ['web']], function(){
                     'uses' => 'dashboardController@storeProduct',
                     'as' => 'store.product'
                 ]);    
+                Route::post('/product/changestatus',[
+                    'uses' => 'dashboardController@changestatProduct',
+                    'as' => 'changestat.product'
+                ]);    
             }); 
 Route::post('/customerlist',[
         'uses' => 'PagesController@customerlist',
@@ -130,6 +134,11 @@ Route::get('/register',
 [
 'uses' => 'CustomerController@register',
 'as' => 'customer.register'
+]);
+Route::get('/activate_user/{code}',
+[
+'uses' => 'CustomerController@activateUser',
+'as' => 'activate.user'
 ]);
 Route::post('/create',
 [

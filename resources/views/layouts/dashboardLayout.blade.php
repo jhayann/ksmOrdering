@@ -13,6 +13,7 @@
      <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
     <!-- Bootstrap Core CSS -->
     <link href=" {{URL::to('css/lib/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
+    <link href=" {{URL::to('css/lib/toastr/toastr.min.css')}}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{URL::to('css/helper.css')}}" rel="stylesheet">
     <link href="{{URL::to('css/style.css')}}" rel="stylesheet">
@@ -55,6 +56,7 @@
     <script src="{{URL::to('js/lib/sticky-kit-master/dist/sticky-kit.min.js')}}"></script>
     
     <script src="{{ URL::to('js/lib/sweetalert/sweetalert.min.js')}}"></script>
+    <script src="{{ URL::to('js/lib/toastr/toastr.min.js')}}"></script>
     
     <script src="{{ URL::to('js/lib/datatables/datatables.min.js')}}"></script>
 <script src="{{URL::to('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js')}}"></script>
@@ -191,8 +193,67 @@
         text: r,
         timer: 2000,
         showConfirmButton: false
-    });
-        }  
+        });
+        }
+        function toast(e,t)
+        {     
+                toastr.success(e,t,{
+                    timeOut: 5000,
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut",
+                    "tapToDismiss": false
+
+                })
+        }
+            function changeStatus(e)
+            {
+            
+            var action_ = $('#stat').text();
+           
+            if(action_ == "active")
+            {
+                   $.ajax({
+                       url: "{{route('changestat.product')}}",
+                       method: "POST",
+                       data: {id:e,status:"0"},
+                       success: function(response) {
+                           displayProduct();
+                                      toast("Product status change to inactive!","Status Changed");
+                       },
+                    error: function () {
+                        sweetAlert("Oops...", "Something went wrong  while updating your product status!!", "error");
+                    }
+                   });
+            }
+            else 
+            {
+               $.ajax({
+                       url: "{{route('changestat.product')}}",
+                       method: "POST",
+                       data: {id:e,status:"1"},
+                       success: function(response) {
+                           displayProduct();
+                              toast("Product status change to active!","Status Changed");
+                       },
+                    error: function () {
+                        sweetAlert("Oops...", "Something went wrong  while updating your product status!!", "error");
+              
+                    }
+                   });
+            }
+            }
     </script>
 </body>
 

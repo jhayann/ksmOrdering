@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\customerRegisteredSuccessfully; 
+
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use JWTAuth;
@@ -10,6 +12,7 @@ use App\Customer;
 use Config;
 use Session;
 use App\Product;
+use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
 
@@ -18,7 +21,7 @@ class CustomerController extends Controller
         // Apply the jwt.auth middleware to all methods in this controller
         // except for the authenticate method. We don't want to prevent
         // the user from retrieving their token if they don't already have it
-        $this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register','store','update']]);
+       //$this->middleware('jwt.auth', ['except' => ['authenticate','index','setSession','register','store','update']]);
     }
 
     public function setSession(Request $request)
@@ -50,7 +53,7 @@ class CustomerController extends Controller
         {
         $credentials = $request->only('email','password');
         
-        try {
+      /*  try {
          Config::set('jwt.user', 'App\Customer'); 
 		  Config::set('auth.providers.users.model', \App\Customer::class);
             // verify the credentials and create a token for the user
@@ -61,10 +64,17 @@ class CustomerController extends Controller
         } catch (JWTException $e) {
             // something went wrong
             return response()->json(['error' => 'could_not_create_token'], 500);
-        }
-
-        // if no errors are encountered we can return a JWT
-       return response()->json(compact('token'));
+        } */
+             Config::set('auth.providers.users.model', \App\Customer::class);
+            if(Auth::attempt($credentials)){
+                // if no errors are encountered we can return a JWT
+      
+           $token = bcrypt($credentials['email']);
+            
+          return response()->json(compact('token'));
+            } else {
+                return response()->json(['error' => 'INVALID CREDENTIALS']);
+            }
         }
       
     }
@@ -74,7 +84,9 @@ class CustomerController extends Controller
         if(session()->exists('customer_token'))
         {
            // return session('customer_token');
-            return view('pages.customerportal');
+         $user = session('customer_email');
+        $customer = Customer::where('email',$user)->get();
+        return view('customer.home')->with('customer',$customer);
         } 
         else 
         {
@@ -87,7 +99,11 @@ class CustomerController extends Controller
         if(session()->exists('customer_token'))
         {
            // return session('customer_token');
-            return view('customer.home');
+            
+          //  return view('customer.home');
+        $user = session('customer_email');
+        $customer = Customer::where('email',$user)->get();
+        return view('customer.home')->with('customer',$customer);
         } 
         else 
         {
@@ -124,7 +140,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
+      $request->validate([
                'firstname' => 'required|string|max:100',
                 'middlename' => 'required|string|max:100',
                 'lastname' => 'required|string|max:100',
@@ -132,7 +148,8 @@ class CustomerController extends Controller
                 'password' => 'required|string|min:6|confirmed' ,
                 'address' => 'required|string',
                 'cpnumber'=>'required|min:11'
-        ]);
+        ]);  
+        $activation = str_random(30).time();
         $customer = new Customer();
         $customer->firstname = $request->firstname;
         $customer->middlename = $request->middlename;
@@ -141,8 +158,12 @@ class CustomerController extends Controller
         $customer->password = bcrypt($request->password);
         $customer->address = $request->address;
         $customer->number = $request->cpnumber;
-        $customer->profileimg =null;
-        $customer->save();
+        $customer->profileimg =null;           
+        $customer->activation_code = $activation;
+    $customer->save(); 
+        $user = Customer::where('email',  $request->email)->first();
+       
+        $user->notify(new customerRegisteredSuccessfully($user));
         return redirect()->route('customerLogin');
     }
 
@@ -183,7 +204,7 @@ class CustomerController extends Controller
                 'middlename' => 'required|string',
                 'lastname' => 'required|string',
                 'birthdate' => 'required',
-                'gender' => 'required',
+                'gender' => 'required|string',
                 'email' => 'required|string|email|max:255',
                 'address' => 'required',
                 'contact' => 'required|min:11'              
@@ -204,6 +225,7 @@ class CustomerController extends Controller
         $customer->number = $request->contact;
         if($image != null){
         $customer->profileimg = $newname;
+       
         }
         $customer->save();
         if($image != null) {
@@ -226,12 +248,31 @@ class CustomerController extends Controller
     
     public function showProduct()
     {
-        $product = Product::all();
+        $product = Product::where('active',1)->get();
         return view('customer.product')->with('products',$product);
     }
      public function desktopProfile()
     {
-        $customer =      Customer::all();
+        /*Config::set('auth.providers.users.model', \App\Customer::class);
+         $user = Auth::user()->email;*/
+    
+      $user = session('customer_email');
+        $customer = Customer::where('email',$user)->get();
         return view('customer.profile')->with('customer',$customer);
     }
+    
+     public function activateUser(string $activationCode)
+    {
+      
+            $customer = app(Customer::class)->where('activation_code', $activationCode)->first();
+            if (!$customer) {
+                return "The code does not exist for any user in our system.";
+            }
+            $customer->status = "activated";
+            $customer->activation_code = null;
+            $customer->save();
+           
+       
+        return redirect()->to('/customer/desktop/home');
+     }
 }

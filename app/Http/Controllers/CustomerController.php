@@ -140,7 +140,7 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-      $request->validate([
+     $request->validate([
                'firstname' => 'required|string|max:100',
                 'middlename' => 'required|string|max:100',
                 'lastname' => 'required|string|max:100',
@@ -160,11 +160,13 @@ class CustomerController extends Controller
         $customer->number = $request->cpnumber;
         $customer->profileimg =null;           
         $customer->activation_code = $activation;
-    $customer->save(); 
+        $customer->save(); 
+    
+       /*----------- SEND email activation link to customer ------------- */
         $user = Customer::where('email',  $request->email)->first();
-       
         $user->notify(new customerRegisteredSuccessfully($user));
-        return redirect()->route('customerLogin');
+        /* ------------------------------------------------------------------------- */
+        return redirect()->route('customerLogin')->with('success','You have successfully register. Please login');
     }
 
     /**
@@ -275,4 +277,18 @@ class CustomerController extends Controller
        
         return redirect()->to('/customer/desktop/home');
      }
+    
+    public function resendactivation($id)
+    {
+    
+        $customer_id = session('customer_email');
+         $activation = str_random(30).time();
+        $customer = Customer::find($id);
+        $customer->activation_code = $activation;
+        $customer->save();
+        
+        $user = Customer::where('id',  $id)->first();
+        $user->notify(new customerRegisteredSuccessfully($user));
+        return back()->with('success',"Email activation resend successfull!");
+    }
 }

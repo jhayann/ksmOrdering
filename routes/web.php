@@ -140,16 +140,22 @@ Route::get('/activate_user/{code}',
 'uses' => 'CustomerController@activateUser',
 'as' => 'activate.user'
 ]);
+Route::get('/resend_activation/{id}',
+[
+'uses' => 'CustomerController@resendactivation',
+'as' => 'customer.resendactivation'
+]);
 Route::post('/create',
 [
 'uses' => 'CustomerController@store',
 'as' => 'customer.store'
 ]);
-    Route::post('/update',
+Route::post('/update',
 [
 'uses' => 'CustomerController@update',
 'as' => 'customer.update'
 ]);
+
 /*
 |--------------------------------------------------------------------------
 |Customer Password Reset

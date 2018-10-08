@@ -10,6 +10,12 @@
            </div>
 
                 <div class="card-body">
+                   @if (session('success'))
+                       <div class="alert alert-success">
+                           {{session('success')}}
+                       </div>
+                   @endif
+                   
                     <form method="POST" id="loginMe" aria-label="{{ __('Login') }}">
                         @csrf
                         @include('includes.message')

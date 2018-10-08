@@ -132,7 +132,7 @@
                       <div class="form-group">
                           
                           <div class="col-xs-6">
-                              <label for="email"><h4>Address</h4></label>
+                              <label for="email"><h4>Complete Address</h4></label>
                               <input type="text" class="form-control" name="address" id="location" placeholder="somewhere" title="enter a location" value="{{$customer[0]->address}}">
                           </div>
                       </div>

@@ -55,7 +55,7 @@ class customerRegisteredSuccessfully extends Notification
             ->greeting(sprintf('Hello %s', $user))
             ->line('You have successfully registered to our resellers program. Please activate your account.')
             ->action('Click Here', route('activate.user', $useractivation_code))
-            ->line('Thank you for using our application!');
+            ->line('Thank you for making business with us!');
     }
 
     /**

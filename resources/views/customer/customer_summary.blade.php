@@ -53,8 +53,17 @@
                 <div class="card-body">
                  
                        <div class="alert alert-danger">
-                           <strong>Your account is not yet activated.! Please verify your account using the activation link that we send to your email.</strong>
+                           <strong>Your account is not yet activated.! Please verify your account using the activation link that we sent to your email.</strong>
                        </div>
+                       <br>
+                        
+                       @if(session('success'))
+                    <div class="alert alert-success" style="color:black"><b>{{session('success')}} </b></div>
+                       @else
+                         <div class="alert alert-info">
+                           <strong>If you did not receive an email from us within 1 hour. <br>You can <a href="{{route('customer.resendactivation', $customer[0]->id)}}"><b style="color:#dd0c67">resend activation</b></a> to your email.</strong>
+                       </div>
+                       @endif
                        
                      
                            

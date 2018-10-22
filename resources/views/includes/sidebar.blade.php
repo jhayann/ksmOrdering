@@ -16,11 +16,11 @@
                             <li><a href="#productlist" id="productlist">Manage Product</a></li>
                        </ul>
                 </li>
-                 <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Orders</span></a>
+                 <li> <a href="#" class="has-arrow" aria-expanded="false"><i class="fa fa-user"></i><span class="hide-menu">Orders <pan id="order1" class="badge badge-danger"></pan></span></a>
                     <ul>
-                        <li><a href="javascript:void(0);" id="">Pending orders</a></li>
+                        <li><a href="{{ route('pendingorder') }}" id="">Pending orders <pan id="order2" class="badge badge-danger"></pan></a></li>
                         <!--    <li><a href="javascript:void(0);" id="create_admin">Create admin(ajax)</a></li>-->
-                        <li><a href="javascript:void(0);">Orders history</a></li>
+                        <li><a href="{{ route('orderhistory') }}">Orders history</a></li>
                    </ul> 
                 </li>          
              <li class="nav-label">MANAGEMENT</li>

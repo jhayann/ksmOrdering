@@ -53,7 +53,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary"> <i class="fa fa-shopping-cart"></i> Place order now</button>
+                    <button type="button" class="btn btn-primary" onclick ="addtocart('{{$product->id}}')"> <i class="fa fa-shopping-cart"></i> Add to your cart</button>
                 </div>
             </div>
         </div>
@@ -67,6 +67,13 @@
             No available product for the moment Please check again later.
         </div>
     @endif
+<script>
+$(document).ready(function(){
+//alert('{{session('customer_email')}}')
+    getmycart();
+});
+    
 
+</script>
 
 @endsection

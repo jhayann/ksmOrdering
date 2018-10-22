@@ -2,8 +2,9 @@
 
 
 @section('styles')
+<style>
 
-
+</style>
 @endsection
 @section('pagetitle')
   <div class="row page-titles">
@@ -11,19 +12,20 @@
                     <h3 class="text-primary">Dashboard</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Orders</a></li>
+                        <li class="breadcrumb-item active">Pending</li>
                     </ol>
                 </div>
     </div>
 @endsection
 @section('content')
-@include('includes.summaryheader')
 <div class="col-auto">
     <div class="card">
         <div class="card-body container" id="ajax">
-                
-          
+
+       
+ <div class="container">
+     <div class="card">
         <div class="table-responsive">
          <table class="table">
     <thead>
@@ -32,7 +34,6 @@
         <th>total</th>
         <th>Status</th>
         <th>date</th>
-        <th>View</th>
     </thead>
     <tbody>
              @if(count($order) >=1)
@@ -63,30 +64,22 @@
                     @endphp
                 </td>
                 <td>{{$or->created_at}}</td>
-                <td><a href="{{route('vieworder',$or->id)}}" class="btn btn-primary">view</a></td>
+              
             </tr>     
         @endforeach
         @else 
             <tr>
-                <td colspan="6">
-                    <div class="alert alert-warning">No pending orders found</div>
+                <td colspan="5">
+                    <div class="alert alert-warning"> NO COMPLETE ORDERS FOUND</div>
                 </td>
             </tr>
          @endif
     </tbody>
 </table>
     </div>
-   
-
-        </div>
+     </div>
+ </div>
+  </div>
     </div>
 </div>
-
-
-
-@endsection
-
-
-@section('scripts')
-
 @endsection

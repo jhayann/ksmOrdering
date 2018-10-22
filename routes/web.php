@@ -32,6 +32,37 @@ Route::group(['middleware'=> ['web']], function(){
                     'uses' => 'dashboardController@changestatProduct',
                     'as' => 'changestat.product'
                 ]);    
+                
+                Route::get('/order/pendingorders',[
+                    'uses' => 'PagesController@pendingOrders',
+                    'as' => 'pendingorder'
+                ]); 
+                
+                Route::get('/order/view/{id}',[
+                    'uses' => 'PagesController@viewCurrentOrder',
+                    'as' => 'vieworder'
+                ]); 
+                
+               Route::get('/order/history',[
+                    'uses' => 'PagesController@viewAllOrder',
+                    'as' => 'orderhistory'
+                ]); 
+                
+                 Route::post('/product/order/complete',[
+                    'uses' => 'PagesController@completeorder',
+                    'as' => 'completeorder'
+                ]); 
+                
+                Route::post('/product/order/pool/pending',[
+                    'uses' => 'PagesController@poolorder',
+                    'as' => 'poolorder'
+                ]); 
+                
+                Route::post('/product/order/count',[
+                    'uses' => 'dashboardController@countOrders',
+                    'as' => 'countorder'
+                ]); 
+                
             }); 
 Route::post('/customerlist',[
         'uses' => 'PagesController@customerlist',
@@ -122,6 +153,42 @@ Route::get('/desktop/products',[
 'uses' => 'CustomerController@showProduct',
 'as' => 'customer.showDesktopProduct'
 ]);
+    
+    /*
+|--------------------------------------------------------------------------
+|Customer cart / order route
+|--------------------------------------------------------------------------*/
+Route::get('/desktop/cart',[
+'uses' => 'CustomerController@myCart',
+'as' => 'customer.showCart'
+]);
+Route::post('/desktop/addcart',[
+'uses' => 'CustomerController@addCart',
+'as' => 'customer.addcart'
+]);
+Route::post('/desktop/countart',[
+'uses' => 'CustomerController@countCart',
+'as' => 'customer.countcart'
+]);
+Route::post('/desktop/updatecart',[
+'uses' => 'CustomerController@updateCart',
+'as' => 'customer.updatecart'
+]);
+Route::post('/desktop/placeorder',[
+'uses' => 'CustomerController@placeOrder',
+'as' => 'customer.placeorder'
+]);
+Route::get('/desktop/order',[
+'uses' => 'CustomerController@getOrders',
+'as' => 'customer.getorder'
+]);
+  Route::get('/desktop/ordercompleted',[
+'uses' => 'CustomerController@orderCompleted',
+'as' => 'customer.ordercompleted'
+]);  
+    
+ //-----------------------------------------------------------------------------   
+    
 Route::get('desktop/logout',[
 'uses' => 'CustomerController@logout',
 'as' => 'customer.logout'

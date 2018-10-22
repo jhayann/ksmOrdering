@@ -12,6 +12,9 @@ use App\Customer;
 use Config;
 use Session;
 use App\Product;
+use App\Cart;
+use DB;
+use App\Orders;
 use Illuminate\Support\Facades\Auth;
 class CustomerController extends Controller
 {
@@ -103,7 +106,8 @@ class CustomerController extends Controller
           //  return view('customer.home');
         $user = session('customer_email');
         $customer = Customer::where('email',$user)->get();
-        return view('customer.home')->with('customer',$customer);
+         $order = Orders::where('userid',session('customer_email'))->where('status',0)->get();
+        return view('customer.home')->with('customer',$customer)->with('order',$order);
         } 
         else 
         {
@@ -291,4 +295,60 @@ class CustomerController extends Controller
         $user->notify(new customerRegisteredSuccessfully($user));
         return back()->with('success',"Email activation resend successfull!");
     }
+    
+    public function myCart()  
+    {
+        $user = session('customer_email');
+        //$carts = Cart::where('user_id',$user)->get();
+        $mycart = DB::table('products')
+            ->join('carts', 'products.id','=','carts.product_id')
+            ->select('products.name', 'products.amount','carts.*')->get();
+       return view('customer.cart')->with('carts',$mycart)->with('grandtotal','0');
+    }
+    
+    public function addCart(Request $request)  
+    {
+        $cart = new Cart();
+        $cart->product_id = $request->productid;
+        $cart->user_id = $request->userid;
+        $cart->save();
+    }
+    public function countCart(Request $request)  
+    {
+         if($request->ajax())
+        {
+             $count = Cart::where('user_id',$request->userid)->count();
+             return response($count);
+         }
+    }
+    
+    public function updateCart(Request $request)  
+    {
+         Cart::where('id',$request->itemid)
+            ->where('user_id',$request->userid)
+            ->update(['qty'=>$request->qty]);
+       
+    }
+    public function placeOrder(Request $request)  
+    {
+        //$orders  = json_encode($request->order_data);
+        $order = new Orders();
+        $order->userid = session('customer_email');
+        $order->order_data =  $request->order_data;
+        $order->total = $request->total;
+        $order->save();
+        
+        Cart::where('user_id',session('customer_email'))->delete();
+        return redirect()->route('customer.ordercompleted');
+    }
+    public function getOrders()  
+    {
+        $order = Orders::where('userid',session('customer_email'))->get();
+        return view('customer.orders',compact('order'));
+    }
+    public function orderCompleted()
+    {
+        return view('customer.ordercomplete');
+    }
+    
 }

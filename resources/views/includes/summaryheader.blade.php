@@ -1,5 +1,5 @@
 
-        <div class="container-fluid">
+      <!--  <div class="container-fluid">
           <div class="row">
                     <div class="col-md-3">
                         <div class="card p-30">
@@ -54,5 +54,5 @@
                         </div>
                     </div>
                 </div>
-    </div>
+    </div>-->
     

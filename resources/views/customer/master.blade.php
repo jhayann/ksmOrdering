@@ -16,7 +16,9 @@
     <!-- Custom CSS -->
     <link href="{{URL::to('css/helper.css')}}" rel="stylesheet">
     <link href="{{URL::to('css/style.css')}}" rel="stylesheet">
-    
+    <link href=" {{URL::to('css/lib/toastr/toastr.min.css')}}" rel="stylesheet">
+    <script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
+     <script src="{{ URL::to('js/lib/toastr/toastr.min.js')}}"></script>
     <style>
         .mymain {
             max-width: 1024px;
@@ -54,14 +56,20 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="order?token={{session('customer_token')}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
                   Orders
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="products?token={{session('customer_token')}}">
+                <a class="nav-link" href="cart?token={{session('customer_token')}}">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shopping-cart"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                  Cart <span class="badge badge-danger" id="cart_badge"></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="products?token={{session('customer_token')}}">
+                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
                   Products
                 </a>
               </li>
@@ -111,7 +119,7 @@
 
 
 
-<script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
+
 <script src="{{URL::to('js/lib/bootstrap/js/popper.min.js')}}"></script>
 <script src="{{URL::to('js/lib/bootstrap/js/bootstrap.min.js')}}"></script>
 <script src="{{ URL::to('js/lib/sweetalert/sweetalert.min.js')}}"></script>
@@ -144,8 +152,83 @@ $('.preloader').fadeOut();
     $(".file-upload").on('change', function(){
         readURL(this);
     });
-        });
+    
+    getmycart();
+    
+    $('#cart_qty').change(function(){
+            var itemid = $("#itemid").val();
+        var qty = $('#cart_qty').val();
+                $.ajax({
+                url:"{{route('customer.updatecart')}}",
+                method:"POST",
+                data:{itemid:itemid,userid:"{{session('customer_email')}}",qty:qty},
+                success: function(data)
+                {
+                 toast("Your cart has been updated.","Success");
+                setTimeout(reloadPage, 2000);
+                }
+            })
+    });
+});
 
+    function reloadPage()
+    {
+        location.reload();
+    }
+ function addtocart(e)
+    { 
+            $.ajax({
+                url:"{{route('customer.addcart')}}",
+                method:"POST",
+                data:{productid:e,userid:"{{session('customer_email')}}"},
+                success: function(data)
+                {
+                 
+                    $('#'+e).modal('hide');
+                     $('#'+e).on('hidden.bs.modal', function (e){
+                          toast("Item added to your cart","Success");
+                         getmycart();
+                     })
+                }
+            });
+    }
+    
+    function getmycart()
+    {
+          $.ajax({
+                url:"{{route('customer.countcart')}}",
+                method:"POST",
+                data:{userid:"{{session('customer_email')}}"},
+                success: function(data)
+                {
+                 $('#cart_badge').html(data);
+                   
+                }
+            });
+    }
+    
+        function toast(e,t)
+        {     
+                toastr.success(e,t,{
+                    timeOut: 5000,
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": true,
+                    "progressBar": true,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": true,
+                    "onclick": null,
+                    "showDuration": "300",
+                    "hideDuration": "1000",
+                    "extendedTimeOut": "1000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut",
+                    "tapToDismiss": false
+
+                })
+        }
         </script>
     </body>
 </html>

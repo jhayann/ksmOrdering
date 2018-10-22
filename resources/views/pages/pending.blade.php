@@ -2,8 +2,9 @@
 
 
 @section('styles')
+<style>
 
-
+</style>
 @endsection
 @section('pagetitle')
   <div class="row page-titles">
@@ -11,19 +12,24 @@
                     <h3 class="text-primary">Dashboard</h3> </div>
                 <div class="col-md-7 align-self-center">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="javascript:void(0)">Orders</a></li>
+                        <li class="breadcrumb-item active">Pending</li>
                     </ol>
                 </div>
     </div>
 @endsection
 @section('content')
-@include('includes.summaryheader')
 <div class="col-auto">
     <div class="card">
         <div class="card-body container" id="ajax">
-                
-          
+        
+        
+        </div>
+    </div>
+</div>
+
+ <div class="container" id="pend">
+     <div class="card">
         <div class="table-responsive">
          <table class="table">
     <thead>
@@ -76,17 +82,33 @@
     </tbody>
 </table>
     </div>
-   
+     </div>
+ </div>
 
-        </div>
-    </div>
-</div>
-
-
-
+        
 @endsection
 
 
-@section('scripts')
 
+@section('scripts')
+<script>
+    $(document).ready(function(){
+    setInterval(poolOrder, 3500);
+})
+  function poolOrder()
+        {
+              $.ajax({
+                       url: "{{route('poolorder')}}",
+                       method: "POST",
+                       data: {status:"0"},
+                       success: function(response) {
+                                $('#pend').html(response);
+                             // toast("Product status change to active!","Status Changed");
+                       },
+                    error: function () {
+                        sweetAlert("Oops...", "Something went wrong  while generating order list!!", "error");
+                    }
+                   });
+        }
+</script>
 @endsection

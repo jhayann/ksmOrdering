@@ -66,12 +66,17 @@
     <script src="{{URL::to('js/lib/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js')}}"></script>
     <script src="{{URL::to('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js')}}"></script>
     <script src="{{URL::to('js/lib/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.0.15/howler.core.min.js"></script>
     <!-- scripit init-->
     @yield('scripts')
     <!--Custom JavaScript -->
     <script src="{{URL::to('js/custom.min.js')}}"></script>
     <script>
         $(document).ready(function(){
+            countOrders();
+            
+       setInterval(countOrders, 4000);
+            
             $('#adminlist').click(function(){
                 poper('Please wait!','Working on it now ...');
                 displayAdmin();
@@ -255,6 +260,40 @@
                    });
             }
             }
+        
+      function countOrders()
+        {
+            
+              $.ajax({
+                       url: "{{route('countorder')}}",
+                       method: "POST",
+                       data: {status:"0"},
+                       success: function(response) {
+                                $('#order1').html(response);
+                             // toast("Product status change to active!","Status Changed");
+                           if(response != 0)
+                               {
+                                   //playnotif();
+                               }
+                       },
+                    error: function () {
+                        sweetAlert("Oops...", "Something went wrong  while generating order counts!", "error");
+                    }
+                   });
+        }
+        
+        function playnotif()
+        {
+          
+          var sound =new Howl({
+                     src: ["{{URL::to('sounds/to-the-point.ogg')}}"],
+                     autoplay: false,
+                     loop: false
+                    });
+
+               sound.play();
+        }
+       
     </script>
 </body>
 

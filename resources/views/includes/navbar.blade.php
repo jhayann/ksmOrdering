@@ -21,10 +21,10 @@
             <ul class="navbar-nav my-lg-0">
                         <!-- Comment -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
+                       <!--     <a class="nav-link dropdown-toggle text-muted text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-bell"></i>
 								@if(count($notifications)>=1)<div class="notify"> <span class="heartbit"></span> <span class="point"></span> </div>
 								@endif
-							</a>
+							</a> -->
                             <div class="dropdown-menu dropdown-menu-right mailbox animated zoomIn">
                                 <ul>
                                     <li>
@@ -37,11 +37,11 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a>
+                              <a class="nav-link text-center" href="javascript:void(0);"> <strong>Check all notifications</strong> <i class="fa fa-angle-right"></i> </a> 
                                     </li>
                                 </ul>
                             </div>
-                        </li>
+                        </li> 
                         <!-- End Comment -->
      
                         <!-- End Messages -->

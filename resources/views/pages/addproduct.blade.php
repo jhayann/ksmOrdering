@@ -46,7 +46,7 @@
     </div>
 @endsection
 @section('content')
-@include('includes.summaryheader')
+
  <div class="col-auto">
         <div class="card">
       

@@ -9,6 +9,7 @@ use App\Customer;
 use App\Product;
 use App\Helpers\Helper;
 use Image;
+use App\Orders;
 class dashboardController extends Controller
 {
     /**
@@ -38,7 +39,8 @@ class dashboardController extends Controller
             return view('pages.manageresell')->with('notifications',$notifications)->with('customers',$customers);
         } else if($page==null){
             $notification =  Notification::all();
-            return view('admin.dashboard')->with('notifications',$notification);
+            $order = Orders::where('status',0)->get();
+            return view('admin.dashboard',compact('order'))->with('notifications',$notification);
         }
         return abort(404);
         
@@ -183,5 +185,15 @@ class dashboardController extends Controller
         $product->save();
     }
     
+    public function countOrders(Request $request)
+    {
+         if($request->ajax())
+        {
+             $count = Orders::where('status',0)->count();
+             if($count == 0){
+             $count ="";}
+             return response($count);
+         }
+    }
   
 }

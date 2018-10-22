@@ -41,7 +41,7 @@ class CustomerController extends Controller
     {
         if(session()->exists('customer_token'))
         {
-           return redirect('customer/home?token='.session('customer_token'));
+           return redirect('customer/desktop/home?token='.session('customer_token'));
         }
      
         return view('customer.login');

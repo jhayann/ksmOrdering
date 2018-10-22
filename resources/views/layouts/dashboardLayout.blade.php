@@ -220,7 +220,8 @@
             function changeStatus(e)
             {
             
-            var action_ = $('#stat').text();
+            var action_ = $('#'+e).text();
+                alert(action_);
            
             if(action_ == "active")
             {
@@ -238,7 +239,7 @@
                    });
             }
             else 
-            {
+            { 
                $.ajax({
                        url: "{{route('changestat.product')}}",
                        method: "POST",

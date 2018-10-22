@@ -22,7 +22,7 @@
                              <td>{{ $product->volume}} </td>
                             <td>{{ $product->categorie}} </td>
                             <td>{{ $product->amount}} </td>
-                            <td><button id="stat" onclick="changeStatus('{{$product->id}}')" class="btn btn-{{ $product->active == 1 ? 'success':'warning'}}  btn sweet-success-cancel">{{$product->active == 1 ? 'active':'inactive'}}</button>
+                            <td><button id="{{$product->id}}" onclick="changeStatus('{{$product->id}}')" class="btn btn-{{ $product->active == 1 ? 'success':'warning'}}  btn sweet-success-cancel">{{$product->active == 1 ? 'active':'inactive'}}</button>
                          
                          </tr>
         

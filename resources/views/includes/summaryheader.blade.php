@@ -8,7 +8,7 @@
                                     <span><i class="fa fa-arrow-up f-s-40 color-primary"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>568120</h2>
+                                    <h2>00</h2>
                                     <p class="m-b-0">Total Revenue</p>
                                 </div>
                             </div>
@@ -21,7 +21,7 @@
                                     <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>1178</h2>
+                                    <h2>00</h2>
                                     <p class="m-b-0">Sales today</p>
                                 </div>
                             </div>
@@ -47,7 +47,7 @@
                                     <span><i class="fa fa-user f-s-40 color-danger"></i></span>
                                 </div>
                                 <div class="media-body media-text-right">
-                                    <h2>847</h2>
+                                    <h2>4</h2>
                                     <p class="m-b-0">Reseller</p>
                                 </div>
                             </div>

@@ -270,10 +270,11 @@
                        data: {status:"0"},
                        success: function(response) {
                                 $('#order1').html(response);
+                           $('#order2').html(response);
                              // toast("Product status change to active!","Status Changed");
                            if(response != 0)
                                {
-                                   //playnotif();
+                                   playnotif();
                                }
                        },
                     error: function () {

@@ -146,10 +146,10 @@ class dashboardController extends Controller
     {
            $this->validate($request,[
            'photo' => 'required|image|max:2048',
-                'name' => 'required|string',
+                'name' => 'required|string|max:30|min:6',
                 'categorie' => 'required',
-                   'volume' => 'required',
-                'price' => 'required|min:2',
+                   'volume' => 'required|max:20',
+                'price' => 'required|min:2|numeric|digits_between:2,3',
                    'details' => 'required'
                 
                 ]);

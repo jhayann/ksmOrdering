@@ -145,13 +145,13 @@ class CustomerController extends Controller
     public function store(Request $request)
     {
      $request->validate([
-               'firstname' => 'required|string|max:100',
-                'middlename' => 'required|string|max:100',
-                'lastname' => 'required|string|max:100',
-                'email' => 'required|string|email|max:255|unique:customers',
+               'firstname' => 'required|string|max:20',
+                'middlename' => 'required|string|max:20',
+                'lastname' => 'required|string|max:20',
+                'email' => 'required|string|email|max:100|unique:customers',
                 'password' => 'required|string|min:6|confirmed' ,
                 'address' => 'required|string',
-                'cpnumber'=>'required|min:11'
+                'cpnumber'=>'required|min:11|max:13'
         ]);  
         $activation = str_random(30).time();
         $customer = new Customer();
@@ -206,14 +206,14 @@ class CustomerController extends Controller
     {
       
           $this->validate($request,[
-                'firstname' => 'required|string',
-                'middlename' => 'required|string',
-                'lastname' => 'required|string',
+                'firstname' => 'required|string|min:3|max:20',
+                'middlename' => 'required|string|min:3|max:20',
+                'lastname' => 'required|string|min:3|max:20',
                 'birthdate' => 'required',
                 'gender' => 'required|string',
-                'email' => 'required|string|email|max:255',
+                'email' => 'required|string|email|max:100',
                 'address' => 'required',
-                'contact' => 'required|min:11'              
+                'contact' => 'required|min:11|max:13'              
                 ]);
           $image = $request->file('photo');
         if($image != null){

@@ -208,7 +208,7 @@ class CustomerController extends Controller
       
           $this->validate($request,[
                 'firstname' => 'required|string|min:3|max:20',
-                'middlename' => 'required|string|min:3|max:20',
+                'middlename' => 'required|string|min:1|max:20',
                 'lastname' => 'required|string|min:3|max:20',
                 'birthdate' => 'required',
                 'gender' => 'required|string',

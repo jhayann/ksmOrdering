@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->string('userid');
             $table->text('order_data');
             $table->decimal('total',8,2);
-            $table->string('status');
+            $table->string('status')->default('0')-;
             $table->timestamps();
         });
     }

@@ -56,7 +56,7 @@
                      @endphp
                     @foreach($data as $ord)
                     @php
-                       $gtotal += $ord->amount;
+                       
                        @endphp
                         <tr>
                             <td colspan="2">{{$ord->name}}</td>
@@ -64,7 +64,12 @@
                             <td>{{$ord->qty}}</td>
                             <td>{{ $ord->qty * $ord->amount }} </td>
                         </tr>
+                    @php
+                        $g = $ord->qty * $ord->amount;
+                       $gtotal += $g;
+                       @endphp
                     @endforeach
+                      
                    <tr>
                        <td colspan="4"><h4>Amount Due:</h4></td>
                        <td><h3>PHP {{$gtotal}}</h3></td>

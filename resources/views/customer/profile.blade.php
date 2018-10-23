@@ -72,7 +72,7 @@
                           <div class="col-xs-4">
                               <label for="first_name"><h4>First name</h4></label>
                               <input type="text" class="form-control {{ $errors->has('firstname') ? ' is-invalid' : '' }}" name="firstname" id="first_name" placeholder="first name" title="enter your first name if any." value="{{$customer[0]->firstname}}">
-                        @if ($errors->has('firstname'))
+                            @if ($errors->has('firstname'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('firstname') }}</strong>
                                     </span>
@@ -83,7 +83,12 @@
                           
                           <div class="col-xs-6">
                             <label for="last_name"><h4>Last name</h4></label>
-                              <input type="text" class="form-control" name="lastname" id="last_name" placeholder="last name" title="enter your last name if any." value="{{$customer[0]->lastname}}">
+                              <input type="text" class="form-control {{ $errors->has('lastname') ? ' is-invalid' : '' }}" name="lastname" id="last_name" placeholder="last name" title="enter your last name if any." value="{{$customer[0]->lastname}}">
+                              @if ($errors->has('lastname'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('lastname') }}</strong>
+                                    </span>
+                                @endif
                           </div>
                       </div>
           
@@ -91,7 +96,12 @@
                           
                           <div class="col-xs-6">
                               <label for="middle_name"><h4>Middle name</h4></label>
-                              <input type="text" class="form-control" name="middlename" id="middle_name" title="enter your middlename." value="{{$customer[0]->middlename}}">
+                              <input type="text" class="form-control {{ $errors->has('middlename') ? ' is-invalid' : '' }}" name="middlename" id="middle_name" title="enter your middlename." value="{{$customer[0]->middlename}}">
+                              @if ($errors->has('middlename'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('middlename') }}</strong>
+                                    </span>
+                                @endif
                           </div>
                       </div>
           
@@ -140,7 +150,12 @@
                           
                           <div class="col-xs-6">
                               <label for="contact"><h4>Contact no.</h4></label>
-                              <input type="number" class="form-control" name="contact" id="contact" placeholder="mobile number" title="enter your mobile number" value="{{$customer[0]->number}}">
+                              <input type="number" class="form-control {{ $errors->has('contact') ? ' is-invalid' : '' }}" name="contact" id="contact" placeholder="mobile number" title="enter your mobile number" value="{{$customer[0]->number}}">
+                              @if ($errors->has('contact'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('contact') }}</strong>
+                                    </span>
+                                @endif
                           </div>
                       </div>
                       <div class="form-group">

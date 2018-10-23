@@ -11,19 +11,21 @@
         @if(count($carts) >= 1)
             @foreach($carts as $cart)
               
-               @php 
-               $grandtotal += $cart->amount;
-               @endphp
+              
                 <tr>
                     <td>{{$cart->name}}</td>
                      <td>{{$cart->amount}}</td>
                       <td>
                           <form>
                              <input type="hidden" id="itemid" value="{{$cart->id}}">
-                              <input type="number" id="cart_qty" class="form-control input-sm" style="width:30%;" value="{{$cart->qty}}">
+                              <input type="number" id="{{$cart->id}}" class="form-control input-sm" style="width:30%;" value="{{$cart->qty}}">
                           </form>
                       </td>
                        <td>{{$cart->qty * $cart->amount}}</td>
+                     @php 
+                    $g = $cart->qty * $cart->amount;
+               $grandtotal += $g;
+               @endphp
                 </tr>            
             @endforeach
             <tr>

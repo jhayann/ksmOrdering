@@ -16,6 +16,7 @@ use App\Cart;
 use DB;
 use App\Orders;
 use Illuminate\Support\Facades\Auth;
+use App\Helpers\Helper;
 class CustomerController extends Controller
 {
 
@@ -351,4 +352,9 @@ class CustomerController extends Controller
         return view('customer.ordercomplete');
     }
     
+    public function tryMe()
+    {
+        Helper::foo();
+    }
+        
 }

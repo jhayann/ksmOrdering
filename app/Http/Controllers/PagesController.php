@@ -9,6 +9,7 @@ use App\Notification;
 use App\Product;
 use App\Orders;
 use DB;
+use App\Helpers\Helper;
 class PagesController extends Controller
 {
      
@@ -110,7 +111,8 @@ class PagesController extends Controller
     {
         Orders::where('id',$request->orderid)
             ->update(['status'=>2]);
-        
+        $msg = "Hello " .$request->fname."! Your order has been proccess and completed. Please wait for a moment so we can deliver your item. Thank you. - KSM";
+         Helper::sendMsg($msg,$request->mobile,"103991");
         return redirect()->route('orderhistory');
     }
 }

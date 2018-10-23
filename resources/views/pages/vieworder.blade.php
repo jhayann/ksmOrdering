@@ -74,6 +74,8 @@
             <br>
             <form action="{{route('completeorder')}}" method="post">
             <input type="hidden" name="orderid" value="{{$order[0]->id}}">
+            <input type="hidden" name="fname" value="{{$order[0]->firstname}}">
+            <input type="hidden" name="mobile" value="{{$order[0]->number}}">
             <button class="btn btn-primary">Complete this order</button>
             </form>
             @else

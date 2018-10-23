@@ -15,6 +15,10 @@ Route::group(['middleware'=> ['web']], function(){
                     'uses' =>   'PagesController@index',
                     'as' => 'index.main'
             ]);
+    Route::get('/try', [
+                    'uses' =>   'CustomerController@tryMe',
+                    'as' => 'index.try'
+            ]);
             Route::group(['prefix' => 'admin'], function(){
                 Route::get('/{page}',[
                     'uses' => 'dashboardController@index',

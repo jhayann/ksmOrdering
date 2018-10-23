@@ -12,13 +12,13 @@ class CustomersTableSeeder extends Seeder
     public function run()
     {
         $customer = new Customer();
-        $customer->name = "Grace Ceno";
-        $customer->username = "grace";
+        $customer->firstname = "Grace";
+        $customer->middlename = "S.";
+        $customer->lastname = "Ceno";
         $customer->email = "graceann@yahoo.com";
         $customer->password = bcrypt("123456");
         $customer->address = "Caloocan";
         $customer->number = "09193317525";
-        $customer->profileimg = "/graceann.jpg";
         $customer->save();
     }
 }

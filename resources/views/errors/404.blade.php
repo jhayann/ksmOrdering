@@ -38,7 +38,7 @@
                 <h3 class="text-uppercase">Page not found </h3>
                 <p class="text-muted m-t-30 m-b-30">Please try after some time</p>
                <p class="text-muted m-t-30 m-b-30">  {{ $exception->getMessage() }}</p>
-                <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" href="{{ route('index')}}">Back to home</a> </div>
+                <a class="btn btn-info btn-rounded waves-effect waves-light m-b-40" href="{{ route('index.main')}}">Back to home</a> </div>
             <footer class="footer text-center">&copy; 2018 KSM Waters</footer>
         </div>
     </div>

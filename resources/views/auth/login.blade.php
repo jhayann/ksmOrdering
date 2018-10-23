@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="card">
             <div class="title">
-                   <p class="title-1">SIGN IN</p>
+                   <p class="title-1" style="text-shadow: 5px 5px 20px #0b6aa8;">ADMINISTRATOR SIGN IN</p>
            </div>
 
                 <div class="card-body">
@@ -41,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+      <!--                  <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
@@ -51,7 +51,7 @@
                                     </label>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -63,7 +63,7 @@
                                     {{ __('Forgot Your Password?') }}
                                 </a>
                             </div>
-                        </div>
+                        </div> 
                     </form>
                 </div>
             </div>

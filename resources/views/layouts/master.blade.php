@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-    <title>KSM WATERS</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::to('img/favicon.png')}}">
+    <title>KSM CRYSTAL WATER</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{ URL::to('vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
@@ -23,7 +23,10 @@
 
     <!-- Custom styles for this template -->
     <link href="{{ URL::to('css/creative.min.css') }}" rel="stylesheet">
+    <link href="{{URL::to('css/preload.css')}}" rel="stylesheet">
+    <style>
 
+    </style>
   </head>
 
   <body id="page-top">
@@ -31,7 +34,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">KSM WATERS</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">KSM CRYSTAL WATER</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,7 +56,13 @@
         </div>
       </div>
     </nav>
+
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+    </div>
 @yield('contents')
+
 
     <!-- Bootstrap core JavaScript -->
     <script src="{{ URL::to('vendor/jquery/jquery.min.js') }}"></script>
@@ -66,7 +75,11 @@
 
     <!-- Custom scripts for this template -->
     <script src="{{ URL::to('js/creative.min.js') }}"></script>
-
+    <script>
+      $(document).ready(function(){
+        $(".preloader").fadeOut();
+      });
+    </script>
   </body>
 
 </html>

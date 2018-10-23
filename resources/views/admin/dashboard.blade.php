@@ -5,10 +5,8 @@
 
 
 @endsection
-
-
-@section('content')
-    <div class="row page-titles">
+@section('pagetitle')
+  <div class="row page-titles">
                 <div class="col-md-5 align-self-center">
                     <h3 class="text-primary">Dashboard</h3> </div>
                 <div class="col-md-7 align-self-center">
@@ -18,74 +16,77 @@
                     </ol>
                 </div>
     </div>
-        <div class="container-fluid">
-          <div class="row">
-                    <div class="col-md-3">
-                        <div class="card p-30">
-                            <div class="media">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="fa fa-usd f-s-40 color-primary"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2>568120</h2>
-                                    <p class="m-b-0">Total Revenue</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card p-30">
-                            <div class="media">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="fa fa-shopping-cart f-s-40 color-success"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2>1178</h2>
-                                    <p class="m-b-0">Sales</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card p-30">
-                            <div class="media">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="fa fa-archive f-s-40 color-warning"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2>25</h2>
-                                    <p class="m-b-0">Stores</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card p-30">
-                            <div class="media">
-                                <div class="media-left meida media-middle">
-                                    <span><i class="fa fa-user f-s-40 color-danger"></i></span>
-                                </div>
-                                <div class="media-body media-text-right">
-                                    <h2>847</h2>
-                                    <p class="m-b-0">Customer</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </div>
-    
- <div class="col-auto">
-        <div class="card">
-            <div class="card-body container" id="ajax">
+@endsection
+@section('content')
+@include('includes.summaryheader')
+<div class="col-auto">
+    <div class="card">
+        <div class="card-body container" id="ajax">
                 
-            </div>
-         </div>
+          
+        <div class="table-responsive">
+         <table class="table">
+    <thead>
+        <th>User</th>
+        <th>Items</th>
+        <th>total</th>
+        <th>Status</th>
+        <th>date</th>
+        <th>View</th>
+    </thead>
+    <tbody>
+             @if(count($order) >=1)
+              @foreach($order as $or)
+            <tr>
+               <td>{{$or->userid}}</td>
+                <td>
+                @php
+                    $data = json_decode($or->order_data);
+                    foreach($data as $ord)
+                    {
+                        echo $ord->name.' @'.$ord->amount. ' x ' .$ord->qty. '<br>';
+                    }
+                @endphp
+                </td>
+                <td>PHP {{$or->total}}</td>
+                <td>
+                    @php
+                        if($or->status==0)
+                        {
+                        echo '<span class="badge badge-warning">pending</span>';
+                        } else  if($or->status==1){
+                          echo '<span class="badge badge-info">processing</span>';
+                        } else  if($or->status==2){
+                          echo '<span class="badge badge-success">completed</span>';
+                        }
+                        
+                    @endphp
+                </td>
+                <td>{{$or->created_at}}</td>
+                <td><a href="{{route('vieworder',$or->id)}}" class="btn btn-primary">view</a></td>
+            </tr>     
+        @endforeach
+        @else 
+            <tr>
+                <td colspan="6">
+                    <div class="alert alert-warning">No pending orders found</div>
+                </td>
+            </tr>
+         @endif
+    </tbody>
+</table>
     </div>
+   
+
+        </div>
+    </div>
+</div>
+
+
+
 @endsection
 
 
 @section('scripts')
- 
 
 @endsection

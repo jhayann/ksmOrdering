@@ -12,13 +12,17 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-
+    <script src="{{URL::to('js/lib/jquery/jquery.min.js')}}"></script>
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::to('img/favicon.png')}}">
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ URL::to('css/lib/sweetalert/sweetalert.css')}}" rel="stylesheet">
+    <link href="{{URL::to('css/preload.css')}}" rel="stylesheet">
+    @yield('style')
     <style>
            .title
         {
@@ -39,6 +43,7 @@
   background-position: center;
             height: 300px;
             padding-top: 90px;
+            max-height:300px;
         }
         .title-1
         {
@@ -81,16 +86,14 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
+                
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <!  <li class="nav-item">
+                                <a class="nav-link" href="{{ route('index.main') }}">{{ __('Home') }}</a>
                             </li>
-                       <!--     <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li> --> 
+                    
                         @else
-                            <li class="nav-item dropdown">
+                         <!--   <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -106,7 +109,7 @@
                                         @csrf
                                     </form>
                                 </div>
-                            </li>
+                            </li>-->
                         @endguest
                     </ul>
                 </div>
@@ -114,8 +117,17 @@
         </nav>
 
         <main class="py-4">
+        <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+			<circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" /> </svg>
+        </div>
             @yield('content')
         </main>
     </div>
+    <script>
+      $(document).ready(function(){
+        $(".preloader").fadeOut();
+      });
+    </script>
 </body>
 </html>

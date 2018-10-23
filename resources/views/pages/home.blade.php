@@ -10,12 +10,12 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
-              <strong style="color:#fcfdff;text-shadow: 5px 5px 20px #0b6aa8;">KSM WATERS<br> AT YOUR SERVICE</strong>
+              <strong style="color:#fcfdff;text-shadow: 5px 5px 20px #0b6aa8;">KSM CRYSTAL WATER<br> AT YOUR SERVICE</strong>
             </h1>
             <hr>
           </div>
           <div class="col-lg-8 mx-auto">
-            <p class="mb-5"  style="color:blackf!important;text-shadow: 5px 5px 5px #000000;">Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
+            <p class="mb-5"  style="color:white!important;text-shadow: 5px 5px 5px #000000;padding-top:80px;">KSM Crystal Water help you with your small business.</p>
             <a class="btn btn-primary btn-xl js-scroll-trigger" href="#about">Find Out More</a>
           </div>
         </div>
@@ -26,10 +26,10 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-            <h2 class="section-heading text-white">We've got what you need!</h2>
+            <h2 class="section-heading text-white">KSM Crystal Water got what you need!</h2>
             <hr class="light my-4">
-            <p class="text-faded mb-4">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started!</a>
+            <p class="text-faded mb-4">KSM Crystal Water provides what you really need. We prioritize healthy and clean mineral water.</p>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="#services">Get Started with our services!</a>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-center">
-            <h2 class="section-heading">At Your Service</h2>
+            <h2 class="section-heading">KSM Crystal Water At Your Service</h2>
             <hr class="my-4">
           </div>
         </div>
@@ -55,7 +55,7 @@
           </div>
           <div class="col-lg-3 col-md-6 text-center">
             <div class="service-box mt-5 mx-auto">
-              <i class="fa fa-4x fa-paper-plane text-primary mb-3 sr-icons"></i>
+              <i class="fa fa-4x fa-truck text-primary mb-3 sr-icons"></i>
               <h3 class="mb-3">Ready to Deliver</h3>
               <p class="text-muted mb-0">Just place an order online or Walk in. We'll proccess it right away</p>
             </div>
@@ -81,104 +81,36 @@
     <section class="p-0" id="portfolio">
       <div class="container-fluid p-0">
         <div class="row no-gutters popup-gallery">
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/1.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/1.jpg" alt="">
+           @if(count($products)>0)
+               @foreach($products as $product)
+            <div class="col-lg-4 col-sm-6">
+            <a class="portfolio-box" href="img/portfolio/fullsize/{{$product->image}}">
+              <img class="img-fluid rounded-circle" src="img/portfolio/thumbnails/{{$product->image}}" alt="">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
-                    Category
+                   {{$product->categorie}}
                   </div>
                   <div class="project-name">
-                    Project Name
+                    {{$product->name}}
                   </div>
                 </div>
               </div>
             </a>
           </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/2.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/2.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/3.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/3.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/4.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/4.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/5.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/5.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="img/portfolio/fullsize/6.jpg">
-              <img class="img-fluid" src="img/portfolio/thumbnails/6.jpg" alt="">
-              <div class="portfolio-box-caption">
-                <div class="portfolio-box-caption-content">
-                  <div class="project-category text-faded">
-                    Category
-                  </div>
-                  <div class="project-name">
-                    Project Name
-                  </div>
-                </div>
-              </div>
-            </a>
-          </div>
+               @endforeach
+           @endif
+    
         </div>
       </div>
     </section>
 
-    <section class="bg-dark text-white">
+    <section class="bg-primary text-white">
       <div class="container text-center">
         <h2 class="mb-4">Free Delivery at your doorsteps!</h2>
-        <a class="btn btn-light btn-xl sr-button" href="http://startbootstrap.com/template-overviews/creative/">Order Now!</a>
+        <a class="btn btn-light btn-xl sr-button" href="{{ route('customer.register')}}">Register now!</a>
+        <h3 class="">OR</h3>
+        <a class="btn btn-light btn-xl sr-button" href="{{ route('customerLogin')}}">Login</a>
       </div>
     </section>
 
@@ -188,7 +120,7 @@
           <div class="col-lg-8 mx-auto text-center">
             <h2 class="section-heading">Let's Get In Touch!</h2>
             <hr class="my-4">
-            <p class="mb-5">Reay to start your  business with us? Be our reseller and accumulate a big discount and special items through our membership points system.</p>
+            <p class="mb-5">Ready to start your  business with us? Be our reseller and accumulate a big discount and special items through our membership points system.</p>
           </div>
         </div>
         <div class="row">
@@ -199,7 +131,7 @@
           <div class="col-lg-4 mr-auto text-center">
             <i class="fa fa-envelope-o fa-3x mb-3 sr-contact"></i>
             <p>
-              <a href="mailto:your-email@your-domain.com">feedback@ksmwaters.com</a>
+              <a href="mailto:your-email@your-domain.com">ksmcrystalwater@gmail.com</a>
             </p>
           </div>
         </div>
